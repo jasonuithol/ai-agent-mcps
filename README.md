@@ -17,9 +17,14 @@ No knowledge base — runtime status is ephemeral. Game-specific lifecycle
 ## Setup
 
 ```bash
-python3 -m venv .venv
-.venv/bin/pip install -r requirements.txt
-./start-mcp-service.sh
+./setup.sh                # one-time, idempotent (creates .venv/, installs deps)
+./start-mcp-service.sh    # run
+```
+
+To validate setup works from bare state:
+
+```bash
+./clean.sh && ./setup.sh && ./start-mcp-service.sh
 ```
 
 ## Register
