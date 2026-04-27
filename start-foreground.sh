@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# start-mcp-service.sh — run the mcp-steam server directly on the host
+# start-foreground.sh — run the mcp-steam server directly on the host
+# in the foreground (blocks until killed). For backgrounded use, see
+# start.sh which wraps this.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

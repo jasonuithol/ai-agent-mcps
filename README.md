@@ -18,14 +18,22 @@ No knowledge base — runtime status is ephemeral. Game-specific lifecycle
 
 ```bash
 ./setup.sh                # one-time, idempotent (creates .venv/, installs deps)
-./start-mcp-service.sh    # run
+./start.sh                # backgrounded host process; returns immediately
+./stop.sh                 # when done
+
+./start-foreground.sh     # alternative: run in foreground for direct dev/debug
 ```
 
 To validate setup works from bare state:
 
 ```bash
-./clean.sh && ./setup.sh && ./start-mcp-service.sh
+./clean.sh && ./setup.sh && ./start.sh
 ```
+
+## Consumers
+
+Any MCP client speaking streamable HTTP. Currently launched by
+`claude-sandbox-core` (see [claude-sandbox-core](https://github.com/jasonuithol/claude-sandbox-core)).
 
 ## Register
 
@@ -33,7 +41,3 @@ To validate setup works from bare state:
 claude mcp add steam --transport http http://localhost:5174/mcp
 ```
 
-## Consumers
-
-Any MCP client speaking streamable HTTP. Currently launched by
-`claude-sandbox/start.sh` for Valheim sessions.
