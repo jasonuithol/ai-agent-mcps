@@ -9,7 +9,7 @@ Steam game, not specific to a single title.
 No KnowledgeReporter — runtime status is ephemeral and not worth indexing.
 
 Register with Claude Code:
-    claude mcp add steam --transport http http://localhost:5174/mcp
+    claude mcp add steam --transport http http://localhost:5177/mcp
 """
 
 import subprocess
@@ -82,9 +82,9 @@ def restart_steam() -> str:
 # ── Entrypoint ────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print("Starting steam MCP on http://0.0.0.0:5174")
+    print("Starting steam MCP on http://0.0.0.0:5177")
     print()
     print("Register with Claude Code:")
-    print("  claude mcp add steam --transport http http://localhost:5174/mcp")
+    print("  claude mcp add steam --transport http http://localhost:5177/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5174)
+    mcp.run(transport="streamable-http", host="0.0.0.0", port=5177)

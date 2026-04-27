@@ -8,7 +8,7 @@ host processes and the ability to launch the Steam GUI.
 
 | Endpoint | Port |
 |----------|------|
-| `http://localhost:5174/mcp` | 5174 |
+| `http://localhost:5177/mcp` | 5177 |
 
 No knowledge base — runtime status is ephemeral. Game-specific lifecycle
 (e.g. Valheim server/client) lives in per-domain control MCPs like
@@ -38,6 +38,6 @@ Any MCP client speaking streamable HTTP. Currently launched by
 ## Register
 
 ```bash
-claude mcp add steam --transport http http://localhost:5174/mcp
+claude mcp add steam --transport http http://localhost:5177/mcp
 ```
 
