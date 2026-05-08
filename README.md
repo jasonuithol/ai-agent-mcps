@@ -5,15 +5,18 @@ DDL, run SQL. One container per engine — currently PostgreSQL and
 Microsoft SQL Server. SQLite is intentionally omitted (in-process; no
 client/server semantics to drive over MCP).
 
-| Subdir | Container | Port | Engine |
-|--------|-----------|------|--------|
-| `postgres/` | `db-mcp-postgres` | 5188 | PostgreSQL 16 |
-| `mssql/` | `db-mcp-mssql` | 5189 | SQL Server 2022 (Developer) |
+| Subdir | Container | MCP port | DB port | Engine |
+|--------|-----------|----------|---------|--------|
+| `postgres/` | `db-mcp-postgres` | 5188 | 5432 | PostgreSQL 16 |
+| `mssql/` | `db-mcp-mssql` | 5189 | 1433 | SQL Server 2022 (Developer) |
 
-The database engine itself is never exposed beyond the container — only
-the MCP transport ports are. PostgreSQL listens on a Unix socket inside
-its container; SQL Server listens on `127.0.0.1:1433` inside its
-container. Each engine has its own named volume for persistence.
+Both the MCP transport port and the engine's native port are published,
+so host-side tools (`psql`, `sqlcmd`, DBeaver, etc.) can connect
+directly when the MCP surface isn't enough. Postgres uses `trust` auth
+for both socket and host connections (matches the unauthenticated MCP
+transport — local dev only). MSSQL requires the SA password
+(`MSSQL_SA_PASSWORD`, defaults to `DevP@ssw0rd!42`). Each engine has
+its own named volume for persistence.
 
 ## Tools (per engine, identical surface)
 
@@ -94,5 +97,7 @@ claude mcp add db-mssql    --transport http http://localhost:5189/mcp
   `[A-Za-z_][A-Za-z0-9_]{0,62}` before being interpolated. SQL bodies
   passed to `execute_ddl` and `execute_sql` are *not* sanitised — they
   go straight to the engine.
-- Neither engine is reachable outside its container; the only network
-  surface per engine is `localhost:518x` (the MCP transport).
+- Both the MCP transport port (`localhost:518x`) and the engine's native
+  port (postgres 5432, mssql 1433) are published on the host. Postgres
+  trusts all host connections; MSSQL requires the SA password. Local
+  dev only — do not point this at a network you don't trust.

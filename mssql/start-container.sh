@@ -4,9 +4,9 @@
 # Persists SQL Server data via the named volume 'db-mcp-mssql-data'.
 # Removed only by ../clean.sh.
 #
-# The SA password is a local-dev value: SQL Server is not exposed beyond
-# the container, only the MCP transport on port 5189 is. Override via the
-# MSSQL_SA_PASSWORD env var if you really want to.
+# The SA password is a local-dev value. Both the MCP transport (5189) and
+# SQL Server itself (1433) are published, so host-side tools can connect
+# directly. Override the SA password via the MSSQL_SA_PASSWORD env var.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -15,6 +15,7 @@ CONTAINER_NAME="db-mcp-mssql"
 IMAGE_NAME="db-mcp-mssql"
 VOLUME_NAME="db-mcp-mssql-data"
 PORT=5189
+MSSQL_PORT=1433
 
 # Default dev password — must satisfy SQL Server's strong-password policy
 # (>=8 chars, three of: upper, lower, digit, symbol). Override via env.
@@ -27,6 +28,7 @@ else
     docker run -d \
         --name "$CONTAINER_NAME" \
         -p "$PORT:$PORT" \
+        -p "$MSSQL_PORT:$MSSQL_PORT" \
         -e "ACCEPT_EULA=Y" \
         -e "MSSQL_SA_PASSWORD=$SA_PASSWORD" \
         -e "MSSQL_PID=Developer" \

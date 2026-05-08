@@ -14,4 +14,4 @@ echo "Starting db-mcp-postgres..."
 echo "Starting db-mcp-mssql..."
 "$SCRIPT_DIR/mssql/start-container.sh"
 
-echo "Done. Services on :5188 (postgres) and :5189 (mssql)."
+echo "Done. MCP on :5188 (postgres) and :5189 (mssql); DBs on :5432 and :1433."

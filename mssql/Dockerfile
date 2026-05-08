@@ -30,9 +30,9 @@ WORKDIR /app
 COPY mcp-service.py entrypoint.sh ./
 RUN chmod +x entrypoint.sh && chown -R mssql:root /app
 
-# MCP transport port. SQL Server itself stays on localhost:1433 inside the
-# container (not published).
+# MCP transport port and SQL Server itself, for direct DB access from host.
 EXPOSE 5189
+EXPOSE 1433
 
 # entrypoint.sh boots SQL Server in the background, waits for it, then
 # exec's the MCP service. Run as the 'mssql' user the base image expects.

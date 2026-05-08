@@ -20,12 +20,16 @@ if [ ! -s "$PGDATA/PG_VERSION" ]; then
     chown -R postgres:postgres "$PGDATA"
     chmod 700 "$PGDATA"
     gosu postgres initdb -D "$PGDATA" --username=postgres --auth=trust --encoding=UTF8
+    # Allow direct TCP connections from the host (port 5432 is published by
+    # start-container.sh). Trust auth matches the socket path — same posture
+    # as the MCP transport, which is also unauthenticated on a published port.
+    echo "host all all all trust" >> "$PGDATA/pg_hba.conf"
 fi
 
-# Disable TCP listening — MCP service connects via Unix socket only.
-# listen_addresses='' means no TCP at all; trust auth on the socket is
-# fine because nothing outside the container can reach it.
-gosu postgres pg_ctl -D "$PGDATA" -o "-c listen_addresses='' -c unix_socket_directories='$SOCKET_DIR'" -w start
+# Listen on all interfaces so the published 5432 port reaches PostgreSQL.
+# Auth: socket = trust (in-container MCP service); host = trust per the
+# pg_hba.conf line appended above.
+gosu postgres pg_ctl -D "$PGDATA" -o "-c listen_addresses='*' -c unix_socket_directories='$SOCKET_DIR'" -w start
 
 echo "PostgreSQL up. Starting MCP service on :5188..."
 exec python /app/mcp-service.py

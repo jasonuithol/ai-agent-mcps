@@ -25,8 +25,9 @@ WORKDIR /app
 COPY mcp-service.py entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 
-# MCP transport port (PostgreSQL itself is not exposed — Unix socket only).
+# MCP transport port and PostgreSQL itself, for direct DB access from host.
 EXPOSE 5188
+EXPOSE 5432
 
 # entrypoint.sh boots PostgreSQL then exec's the MCP service.
 CMD ["./entrypoint.sh"]
