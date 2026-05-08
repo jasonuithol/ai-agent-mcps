@@ -86,9 +86,11 @@ mcp = FastMCP(
         "drop_database to manage user databases. Use execute_ddl(database, sql) "
         "for schema changes and execute_sql(database, sql, params) for queries "
         "and DML. list_tables and describe_table are convenience helpers. "
-        "Parameter placeholders for execute_sql use %s (pymssql convention). "
-        "The system databases 'master', 'tempdb', 'model', and 'msdb' are "
-        "protected from dropping."
+        "connection_info() returns a SQL Server connection string if you need "
+        "to drive the database with a tool that doesn't speak MCP. Parameter "
+        "placeholders for execute_sql use %s (pymssql convention). The system "
+        "databases 'master', 'tempdb', 'model', and 'msdb' are protected from "
+        "dropping."
     ),
 )
 
@@ -385,6 +387,35 @@ async def describe_table(database: str, table: str, schema: str = "dbo") -> str:
         dflt = f"  default={default}" if default else ""
         lines.append(f"  {col.ljust(name_w)}  {dtype.ljust(type_w)}  {nul}{dflt}")
     return "\n".join(lines)
+
+
+# ── Connection metadata ──────────────────────────────────────────────────────
+
+@mcp.tool()
+async def connection_info() -> str:
+    """Return connection details for connecting directly to SQL Server,
+    bypassing this MCP service. Useful when you need a tool that speaks
+    TDS (sqlcmd, pyodbc, pymssql, sqlalchemy, etc.) rather than MCP.
+
+    Default host is 'host.containers.internal' (the view from a sibling
+    container, e.g. the claude-sandbox). From the host machine itself,
+    use 'localhost' instead.
+    """
+    host = "host.containers.internal"
+    port = 1433
+    user = MSSQL_USER
+    password = MSSQL_PASSWORD
+    return (
+        "SQL Server direct connection (bypasses MCP):\n"
+        f"  host:      {host}\n"
+        f"  port:      {port}\n"
+        f"  user:      {user}\n"
+        f"  password:  {password}\n"
+        f"  database:  master (default; user-created DBs also reachable)\n"
+        f"  conn str:  Server={host},{port};User Id={user};Password={password};TrustServerCertificate=yes\n"
+        "\n"
+        f"From the host machine, replace '{host}' with 'localhost'."
+    )
 
 
 # ── Entrypoint ────────────────────────────────────────────────────────────────

@@ -45,6 +45,9 @@ its own named volume for persistence.
 - `describe_table(database, table, schema?)` — columns, types,
   nullability, defaults via `information_schema.columns` (works the
   same on both engines).
+- `connection_info()` — returns a libpq DSN (postgres) or SQL Server
+  connection string (mssql) for direct DB access from a sibling
+  container, when you need a tool that doesn't speak MCP.
 
 ## Usage
 
@@ -53,7 +56,12 @@ its own named volume for persistence.
 ./start.sh                # bring up both containers
 ./stop.sh                 # shut them down (databases preserved)
 ./clean.sh                # full teardown (DESTROYS both data volumes)
+./info.sh                 # print connection details / DSNs for both engines
 ```
+
+`./info.sh` defaults to `host.containers.internal` (the view from a
+sibling container — e.g. the claude-sandbox); use `HOST=localhost
+./info.sh` for connections from the host itself.
 
 To validate setup works from bare state:
 

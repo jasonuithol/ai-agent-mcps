@@ -78,8 +78,10 @@ mcp = FastMCP(
         "to manage databases. Use execute_ddl(database, sql) for schema changes "
         "(autocommit) and execute_sql(database, sql, params) for queries and DML "
         "(transactional, results returned as rows). list_tables and describe_table "
-        "are convenience helpers. The 'postgres', 'template0', and 'template1' "
-        "databases are protected from dropping."
+        "are convenience helpers. connection_info() returns a libpq DSN if you "
+        "need to drive the database with a tool that doesn't speak MCP. The "
+        "'postgres', 'template0', and 'template1' databases are protected from "
+        "dropping."
     ),
 )
 
@@ -375,6 +377,34 @@ async def describe_table(database: str, table: str, schema: str = "public") -> s
         dflt = f"  default={default}" if default else ""
         lines.append(f"  {col.ljust(name_w)}  {dtype.ljust(type_w)}  {nul}{dflt}")
     return "\n".join(lines)
+
+
+# ── Connection metadata ──────────────────────────────────────────────────────
+
+@mcp.tool()
+async def connection_info() -> str:
+    """Return connection details for connecting directly to PostgreSQL,
+    bypassing this MCP service. Useful when you need a tool that speaks
+    libpq (psql, pgcli, sqlalchemy, psycopg, etc.) rather than MCP.
+
+    Default host is 'host.containers.internal' (the view from a sibling
+    container, e.g. the claude-sandbox). From the host machine itself,
+    use 'localhost' instead.
+    """
+    host = "host.containers.internal"
+    port = 5432
+    user = PG_USER
+    return (
+        "PostgreSQL direct connection (bypasses MCP):\n"
+        f"  host:      {host}\n"
+        f"  port:      {port}\n"
+        f"  user:      {user}\n"
+        f"  password:  (none — trust auth on host connections)\n"
+        f"  database:  postgres (default; user-created DBs also reachable)\n"
+        f"  DSN:       postgresql://{user}@{host}:{port}/postgres\n"
+        "\n"
+        f"From the host machine, replace '{host}' with 'localhost'."
+    )
 
 
 # ── Entrypoint ────────────────────────────────────────────────────────────────
