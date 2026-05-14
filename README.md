@@ -83,6 +83,15 @@ claude mcp add db-postgres --transport http http://localhost:5188/mcp
 claude mcp add db-mssql    --transport http http://localhost:5189/mcp
 ```
 
+## See also
+
+[`mcp-ssis`](https://github.com/jasonuithol/mcp-ssis) — peer container
+that wraps SSIS-on-Linux (`dtexec`) for validating, running, and
+benchmarking `.dtsx` packages. Issues its benchmark state-reset SQL
+against this repo's mssql container over `host.containers.internal:1433`,
+so the two are designed to run side by side. Dev/benchmark rig for
+building an SSIS replacement.
+
 ## Configuration
 
 **Postgres container** (`postgres/start-container.sh`):
