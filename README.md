@@ -31,6 +31,30 @@ Container starts with `nuget.org` as the only feed. Manage with
 `add_feed` / `remove_feed` / `list_feeds`. Per-project `nuget.config`
 files in source trees are respected automatically by `dotnet restore`.
 
+## Per-machine config (`service/.env`)
+
+The build container only knows about `~/Projects` and the persistent SDK /
+NuGet volumes. Projects that reference vendor assemblies outside of those
+(game SDKs, COTS libraries, etc.) need extra bind-mounts. `start-container.sh`
+sources `service/.env` as bash before launching, honouring two arrays:
+
+```bash
+EXTRA_MOUNTS=(
+    "/host/path/with spaces:/opt/something:ro"
+)
+EXTRA_ENV=(
+    "MY_REF_DIR=/opt/something"
+)
+```
+
+Restart the container (`./stop.sh && ./start.sh`, or `docker rm -f
+dotnet-mcp-build && ./start.sh`) after editing — mounts can't be added to
+a running container. `.env` is gitignored.
+
+Typical use: a Valheim mod whose csproj references `$(VALHEIM_SERVER_DIR)`
+needs the Steam install bind-mounted into the container and the env-var
+exported.
+
 ## Consumers
 
 Launched by [`claude-sandbox-core`](https://github.com/jasonuithol/claude-sandbox-core)
