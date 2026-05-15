@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """
-mcp-service.py — mcp-build
+mcp-service.py — valheim-mod
 
-Runs inside a Docker container. Exposes mod build, deploy, package,
-decompile, and SVG conversion tools to Claude Code.
+Runs inside a Docker container. Exposes Valheim mod ops to Claude Code:
+BepInEx deploy (client + server), Thunderstore package/publish/download,
+and SVG → PNG conversion for Thunderstore icons.
+
+Generic .NET build + ilspycmd decompile live in the sibling mcp-dotnet
+service (port 5202). The full mod workflow is:
+    1. mcp-dotnet: `build`
+    2. valheim-mod: `deploy_server` / `deploy_client` / `package` / `publish`
 
 Register with Claude Code (run this inside the claude-sandbox-core container):
-    claude mcp add valheim-build --transport http http://localhost:5182/mcp
-
-Or on the host directly:
-    claude mcp add valheim-build --transport http http://localhost:5182/mcp
+    claude mcp add valheim-mod --transport http http://localhost:5182/mcp
 """
 
 import asyncio
@@ -94,7 +97,7 @@ def _container_to_host(container_path: str) -> str:
 
 # ── Knowledge reporter ────────────────────────────────────────────────────────
 
-_reporter = KnowledgeReporter(service="mcp-build")
+_reporter = KnowledgeReporter(service="valheim-mod")
 _report = _reporter.report
 
 
@@ -132,39 +135,20 @@ async def _run_async(cmd: list[str], cwd: str | None, log_path: Path) -> tuple[b
 # ── MCP server ────────────────────────────────────────────────────────────────
 
 mcp = FastMCP(
-    name="valheim-build",
+    name="valheim-mod",
     instructions=(
-        "Tools for building, deploying, and packaging Valheim mods. "
-        "All tools (build, deploy, package, decompile, convert) return "
-        "the full log output so you can diagnose failures without reading a file. "
-        "Server and client control tools are in the sibling valheim-control MCP (mcp-valheim/control, port 5173)."
+        "Valheim mod ops: BepInEx deploy (client + server), Thunderstore "
+        "package/publish/download, SVG → PNG icon conversion. All tools "
+        "return full log output so failures can be diagnosed without "
+        "reading a file. "
+        "Generic .NET build + ilspycmd decompile are in the sibling "
+        "mcp-dotnet MCP (port 5202) — run that first, then deploy/package here. "
+        "Server and client lifecycle control is in valheim-control (mcp-valheim/control, port 5173)."
     ),
 )
 
 
-# ── Build, deploy, package (blocking — return full log) ───────────────────────
-
-@mcp.tool()
-async def build(project: str) -> str:
-    """
-    Build a mod project with 'dotnet build -c Release'.
-
-    Args:
-        project: Project folder name under ~/Projects (no path separators, e.g. 'ValheimRainDance').
-
-    Returns the full build log. Always check the result before running deploy or package.
-    """
-    cwd = str(PROJECT_DIR / project)
-    success, log = await _run_async(
-        ["dotnet", "build", "-c", "Release"],
-        cwd=cwd,
-        log_path=LOGS_DIR / "build.log",
-    )
-    header = "BUILD SUCCEEDED ✓" if success else "BUILD FAILED ✗"
-    result = f"{header}\n\n{log}"
-    _report("build", {"project": project}, result, success)
-    return result
-
+# ── Deploy / package / publish (blocking — return full log) ───────────────────
 
 @mcp.tool()
 async def deploy_server(project: str) -> str:
@@ -571,41 +555,6 @@ def _deploy_extracted(extracted: Path, game_root: Path, lines: list[str]) -> int
 # ── Path-translated tools (blocking) ─────────────────────────────────────────
 
 @mcp.tool()
-async def decompile_dll(container_path: str, type_name: str | None = None) -> str:
-    """
-    Decompile a DLL with ilspycmd and return the source output.
-    Output is also written to logs/ilspy.log.
-
-    Args:
-        container_path: Path to the DLL as seen from inside the container,
-                        e.g. '/workspace/valheim/server/valheim_server_Data/Managed/assembly_valheim.dll'
-        type_name:      Optional type name to decompile a single class,
-                        e.g. 'Player' or 'ZRoutedRpc'. Omit to decompile the entire DLL.
-    """
-    try:
-        host_path = _container_to_host(container_path)
-    except ValueError as e:
-        result = f"PATH TRANSLATION FAILED\n\n{e}"
-        _report("decompile_dll", {"container_path": container_path, "type_name": type_name}, result, False)
-        return result
-
-    cmd = ["ilspycmd"]
-    if type_name:
-        cmd += ["-t", type_name]
-    cmd.append(host_path)
-
-    success, log = await _run_async(
-        cmd,
-        cwd=None,
-        log_path=LOGS_DIR / "ilspy.log",
-    )
-    header = "DECOMPILE SUCCEEDED ✓" if success else "DECOMPILE FAILED ✗"
-    result = f"{header}\n\n{log}"
-    _report("decompile_dll", {"container_path": container_path, "type_name": type_name}, result, success)
-    return result
-
-
-@mcp.tool()
 async def convert_svg(container_path: str) -> str:
     """
     Convert an SVG to a 256x256 PNG using rsvg-convert.
@@ -640,7 +589,7 @@ async def convert_svg(container_path: str) -> str:
 @mcp.tool()
 def refresh_path_map() -> str:
     """
-    Rebuild the sandbox → valheim-build path map from environment variables.
+    Rebuild the sandbox → valheim-mod path map from environment variables.
     Only needed if mount paths have changed since startup.
     """
     result = _build_path_map()
@@ -653,9 +602,9 @@ def refresh_path_map() -> str:
 if __name__ == "__main__":
     print("Building initial path map...")
     _build_path_map()
-    print("Starting valheim-build MCP on http://0.0.0.0:5182")
+    print("Starting valheim-mod MCP on http://0.0.0.0:5182")
     print()
     print("Register with Claude Code:")
-    print("  claude mcp add valheim-build --transport http http://localhost:5182/mcp")
+    print("  claude mcp add valheim-mod --transport http http://localhost:5182/mcp")
     print()
     mcp.run(transport="streamable-http", host="0.0.0.0", port=5182)

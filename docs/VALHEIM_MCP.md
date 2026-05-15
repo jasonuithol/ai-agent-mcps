@@ -6,11 +6,15 @@ the Claude Code container using the MCP tool servers.
 ## Architecture
 
 Three MCP services back the `valheim` domain of `claude-sandbox-core`.
-`build/` runs in a container (heavy build tools). `control/` runs as a
-host process (needs access to host processes and container management).
-`knowledge/` runs in a container (RAG knowledge base). Both `build/` and
-`control/` report every tool execution to `knowledge/` via
+`mod/` runs in a container (Thunderstore + BepInEx ops). `control/` runs
+as a host process (needs access to host processes and container
+management). `knowledge/` runs in a container (RAG knowledge base). Both
+`mod/` and `control/` report every tool execution to `knowledge/` via
 fire-and-forget HTTP POST.
+
+Generic `dotnet build` and `ilspycmd` decompile are in the sibling
+`mcp-dotnet` service (port 5202) — also listed in `domains/valheim.conf`'s
+`MCP_REPOS`, so a full Valheim domain start brings up four services.
 
 ```
 Podman (on host)
@@ -19,10 +23,10 @@ Podman (on host)
 │       │
 │       ├──── HTTP (port 5182) ────────────────────────────────────┐
 │       │                                                           ▼
-│       │                                             valheim-build    (port 5182, container)
+│       │                                             valheim-mod      (port 5182, container)
 │       │                                                  │
-│       │                                                  ├── dotnet build     (mod builds)
-│       │                                                  ├── ilspycmd         (decompile DLLs)
+│       │                                                  ├── BepInEx deploy   (client + server)
+│       │                                                  ├── Thunderstore     (package/publish/download)
 │       │                                                  ├── rsvg-convert     (SVG→PNG)
 │       │                                                  └── POST /ingest ──────────┐
 │       │                                                                               │
@@ -65,11 +69,11 @@ systemctl --user enable --now podman.socket
 ```
 
 `bin/start.sh` calls `mcp-valheim/setup.sh` (idempotent: builds the
-`valheim-build` and `valheim-knowledge` images) then
-`mcp-valheim/start.sh` (which starts all three services: build container,
-control host process, knowledge container). The Claude container is
-launched last and receives the registered MCP service URLs from the
-domain conf.
+`valheim-mod` and `valheim-knowledge` images) then
+`mcp-valheim/start.sh` (which starts all three services: mod container,
+control host process, knowledge container). `mcp-dotnet` is also brought
+up by the domain start. The Claude container is launched last and
+receives the registered MCP service URLs from the domain conf.
 
 ### 4. Service registration
 
@@ -79,35 +83,38 @@ each. Verify with `/mcp` inside any Claude Code session.
 
 ### 5. Refresh the path map if the sandbox container is restarted
 
-The path map (used by `decompile_dll` and `convert_svg` to translate container
-paths to host paths) is built when `valheim-build` starts. If the Claude
-sandbox container is restarted, call `refresh_path_map()` to rebuild it
-without restarting `valheim-build`.
+The path map (used by `convert_svg` to translate container paths to host
+paths) is built when `valheim-mod` starts. If the Claude sandbox container
+is restarted, call `refresh_path_map()` to rebuild it without restarting
+`valheim-mod`.
 
 ---
 
 ## MCP Tools
 
-### Build and Deploy (`valheim-build`, port 5182)
+### Deploy and Thunderstore (`valheim-mod`, port 5182)
 
 These tools are **blocking** — they run to completion and return the full log.
 
 | Tool | Argument | Description |
 |------|----------|-------------|
-| `build(project)` | Project folder name | `dotnet build -c Release` |
 | `deploy_server(project)` | Project folder name | Copy DLLs and configs to server BepInEx dirs |
 | `deploy_client(project)` | Project folder name | Copy DLLs and configs to client BepInEx dirs |
 | `package(project)` | Project folder name | Bundle mod into Thunderstore zip |
-| `publish(project, community)` | Project folder name, community slug (default: `"valheim"`) | Upload packaged zip to Thunderstore |
+| `publish(project, community, categories)` | Project folder name, community slug (default: `"valheim"`), category slugs | Upload packaged zip to Thunderstore |
+| `download(package, client, server)` | `namespace-name-version`, deploy flags | Fetch a Thunderstore package and deploy it |
+
+For `build`, use the sibling `dotnet` MCP (port 5202) — run `dotnet build`
+there first, then `deploy_*` / `package` here.
 
 `project` is a folder name under `~/Projects` with no path separators,
-e.g. `"ValheimRainDance"`. Always build and verify success before deploying
-or packaging. Always build and package before publishing.
+e.g. `"ValheimRainDance"`. Always build (via `dotnet`) and verify success
+before deploying or packaging. Always build and package before publishing.
 
 ### Thunderstore Publishing
 
 `publish` requires a `THUNDERSTORE_TOKEN` environment variable. Place your
-service account token (format `tss_XXXX`) in `mcp-build/.env`:
+service account token (format `tss_XXXX`) in `mod/.env`:
 
 ```
 THUNDERSTORE_TOKEN=tss_your_token_here
@@ -116,23 +123,15 @@ THUNDERSTORE_TOKEN=tss_your_token_here
 This file is gitignored. The token is loaded automatically by
 `start-container.sh` and passed into the container.
 
-### Decompiling Assemblies (`valheim-build`)
+### Decompiling Assemblies — moved
 
-```
-decompile_dll(container_path)
-```
+`decompile_dll` now lives in the sibling `mcp-dotnet` MCP (port 5202).
+Pass the container-local path of the DLL as you would have here. No path
+map translation is performed by mcp-dotnet — mount the DLL's directory
+into both containers (claude-sandbox-core's valheim domain already mounts
+`~/Projects` into both) and reference it under `/opt/projects/...`.
 
-Decompiles a DLL with `ilspycmd` and returns the source. Pass the path as
-seen from inside the Claude sandbox container:
-
-```
-/workspace/valheim/server/valheim_server_Data/Managed/assembly_valheim.dll
-```
-
-Output is also written to `logs/ilspy.log`. Output can be large for complex
-assemblies — filter or grep as needed.
-
-### Converting SVG to PNG (`valheim-build`)
+### Converting SVG to PNG (`valheim-mod`)
 
 ```
 convert_svg(container_path)
@@ -148,7 +147,7 @@ seen from inside the Claude sandbox container:
 Output PNG is written next to the source SVG with a `.png` extension, suitable
 for Thunderstore mod icons.
 
-### Utility (`valheim-build`)
+### Utility (`valheim-mod`)
 
 ```
 refresh_path_map()
@@ -235,18 +234,17 @@ automatically from normal tool usage.
 
 ## Logs
 
-All tool logs are written to `~/Projects/claude-sandbox-core/workspaces/valheim/valheim/logs/` on the host
-(mounted into the valheim-build container at `/opt/workspace/valheim/logs/`),
+All `valheim-mod` tool logs are written to `~/Projects/claude-sandbox-core/workspaces/valheim/valheim/logs/`
+on the host (mounted into the container at `/opt/workspace/valheim/logs/`),
 and are also returned directly in the tool response.
 
 | File | Written by |
 |------|------------|
-| `logs/build.log` | `build` |
 | `logs/deploy-server.log` | `deploy_server` |
 | `logs/deploy-client.log` | `deploy_client` |
 | `logs/package.log` | `package` |
 | `logs/publish.log` | `publish` |
-| `logs/ilspy.log` | `decompile_dll` |
+| `logs/download.log` | `download` |
 | `logs/svg-to-png.log` | `convert_svg` |
 | `logs/server.log` | `start_server` (server container stdout) |
 | `logs/client.log` | `start_client` (client process stdout) |
@@ -311,13 +309,13 @@ EOF
 
 | File | Purpose |
 |------|---------|
-| `mcp-build/mcp-service.py` | Build MCP implementation (container, port 5182) |
-| `mcp-build/Dockerfile` | Build MCP container image definition |
-| `mcp-build/build-container.sh` | Build the container image |
-| `mcp-build/start-container.sh` | Start the container |
-| `mcp-control/mcp-service.py` | Control MCP implementation (host process, port 5173) |
-| `mcp-control/start-mcp-service.sh` | Start the control MCP server on the host |
-| `mcp-knowledge/` | Knowledge RAG service (container, port 5184) — see `mcp-knowledge/CLAUDE.md` |
+| `mod/mcp-service.py` | valheim-mod MCP implementation (container, port 5182) |
+| `mod/Dockerfile` | valheim-mod container image definition |
+| `mod/build-container.sh` | Build the container image |
+| `mod/start-container.sh` | Start the container |
+| `control/mcp-service.py` | Control MCP implementation (host process, port 5173) |
+| `control/start-mcp-service.sh` | Start the control MCP server on the host |
+| `knowledge/` | Knowledge RAG service (container, port 5184) — see `knowledge/CLAUDE.md` |
 
 ---
 

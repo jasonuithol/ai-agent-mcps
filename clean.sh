@@ -16,7 +16,7 @@ if [ -d "$VENV" ]; then
     rm -rf "$VENV"
 fi
 
-for image in valheim-mcp-build valheim-mcp-knowledge; do
+for image in valheim-mcp-mod valheim-mcp-knowledge; do
     if docker image inspect "$image" >/dev/null 2>&1; then
         echo "Removing image $image..."
         docker rmi -f "$image" >/dev/null

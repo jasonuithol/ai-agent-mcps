@@ -3,7 +3,7 @@
 #
 # Provisions:
 #   - .venv/ (host-side, used by control/)
-#   - valheim-mcp-build container image
+#   - valheim-mcp-mod container image (Thunderstore + BepInEx ops)
 #   - valheim-mcp-knowledge container image
 set -euo pipefail
 
@@ -23,9 +23,9 @@ echo "Installing/upgrading host-side dependencies (control/)..."
 
 # ── Container images ──────────────────────────────────────────────────────────
 
-declare -A SUBDIR=( [valheim-mcp-build]=build [valheim-mcp-knowledge]=knowledge )
+declare -A SUBDIR=( [valheim-mcp-mod]=mod [valheim-mcp-knowledge]=knowledge )
 
-for image in valheim-mcp-build valheim-mcp-knowledge; do
+for image in valheim-mcp-mod valheim-mcp-knowledge; do
     if docker image inspect "$image" >/dev/null 2>&1; then
         echo "Image $image already built — skipping."
     else

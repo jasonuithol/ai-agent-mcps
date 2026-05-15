@@ -30,7 +30,7 @@ stop_host_port() {
     fi
 }
 
-stop_container valheim-mcp-build
+stop_container valheim-mcp-mod
 stop_host_port valheim-control 5173
 stop_container valheim-mcp-knowledge
 

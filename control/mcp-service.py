@@ -55,7 +55,8 @@ mcp = FastMCP(
         "Tools for controlling the Valheim server container and client process on the host. "
         "Runs directly on the host — use these for anything that requires visibility into "
         "host processes or container management. "
-        "Build tools are in the sibling valheim-build MCP (mcp-valheim/build, port 5182). "
+        "Mod deploy/Thunderstore tools are in the sibling valheim-mod MCP (mcp-valheim/mod, port 5182). "
+        "Generic .NET build is in the dotnet MCP (mcp-dotnet, port 5202). "
         "Steam process control is in the sibling mcp-steam (port 5174)."
     ),
 )
