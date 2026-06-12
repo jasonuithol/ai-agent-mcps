@@ -531,6 +531,59 @@ async def objdump_disasm(path: str, intel: bool = True) -> str:
     return result
 
 
+# ── decompile (rizin + rz-ghidra) ───────────────────────────────────────────────
+
+@mcp.tool()
+async def decompile(path: str, address: str, full_analysis: bool = False) -> str:
+    """Decompile ONE function to C-like pseudocode via rizin + rz-ghidra (`pdg`).
+
+    The Ghidra decompiler engine, headless — best for understanding what a
+    specific function actually computes when offset/disasm reading is too noisy
+    (e.g. stripped, optimized 64-bit PE binaries).
+
+    `address` is a hex virtual address or symbol, e.g. "0x142bbf5e0" or "main"
+    (PE images load at their preferred base, so use the VA, not a file offset).
+    By default only the target function is analyzed (`af` — fast even on a
+    100 MB+ binary). Set full_analysis=True for a whole-program `aaa` first
+    (slow) when callee names / cross-refs need resolving.
+
+    Result is indexed in the knowledge base keyed by md5.
+    """
+    try:
+        p = _resolve_path(path)
+    except Exception as e:
+        result = f"FAILED\n\n{e}"
+        _report("decompile", {"path": path, "address": address}, result, False)
+        return result
+
+    pre = "aaa" if full_analysis else f"af @ {address}"
+    # scr.color=0 -> plain text; analyze the function then decompile it.
+    cmd = ["rizin", "-q", "-e", "scr.color=0",
+           "-c", f"{pre}; pdg @ {address}", str(p)]
+
+    ok, out = await _run_async(cmd)
+    result = out if ok else f"FAILED\n\n{out}"
+    if ok and not out.strip():
+        result = ("FAILED\n\nempty output — function not found at that address, "
+                  "or rz-ghidra (pdg) is not installed in this image.")
+        ok = False
+
+    md5_hex = ""
+    try:
+        md5_hex = _md5_of(p)
+    except Exception:
+        pass
+
+    _report(
+        "decompile",
+        {"path": str(p), "filename": p.name, "md5": md5_hex,
+         "address": address, "full_analysis": full_analysis},
+        result,
+        ok,
+    )
+    return result
+
+
 # ── slice_bytes ───────────────────────────────────────────────────────────────
 
 @mcp.tool()

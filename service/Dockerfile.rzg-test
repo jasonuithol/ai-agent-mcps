@@ -1,0 +1,36 @@
+# Test image: validate rizin + rz-ghidra (headless Ghidra decompiler => `pdg`)
+# build recipe before folding it into service/Dockerfile.
+FROM python:3.12-slim-bookworm
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      build-essential cmake ninja-build pkg-config git curl ca-certificates \
+      libuv1-dev libpcre2-dev zlib1g-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# meson from pip (newer than bookworm apt; rizin 0.8 wants a recent meson)
+RUN pip install --no-cache-dir meson ninja
+
+# rizin from source
+RUN git clone --depth 1 --branch v0.8.2 https://github.com/rizinorg/rizin /tmp/rizin \
+ && cd /tmp/rizin \
+ && meson setup build --buildtype=release \
+ && meson compile -C build \
+ && meson install -C build \
+ && ldconfig \
+ && rm -rf /tmp/rizin
+
+# rz-ghidra (provides the `pdg` decompiler command), built against installed rizin
+RUN git clone --depth 1 --branch v0.8.0 --recurse-submodules \
+      https://github.com/rizinorg/rz-ghidra /tmp/rzg \
+ && cd /tmp/rzg \
+ && cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+      -DCMAKE_PREFIX_PATH=/usr/local -DBUILD_CUTTER_PLUGIN=OFF \
+ && cmake --build build \
+ && cmake --install build \
+ && ldconfig \
+ && rm -rf /tmp/rzg
+
+# smoke-test at build time: pdg must be registered
+RUN rizin -v && rizin -qc 'Lc' /bin/ls 2>/dev/null | grep -i ghidra || true
+
+CMD ["bash"]

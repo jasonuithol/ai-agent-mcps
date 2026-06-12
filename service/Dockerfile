@@ -23,6 +23,25 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
+# rizin + rz-ghidra: headless Ghidra decompiler engine (provides `pdg`) for the
+# `decompile` tool. Decompiles individual functions of stripped/optimized 64-bit
+# PE binaries where disasm/offset reading is too noisy. No JVM, no GUI.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+      build-essential cmake ninja-build pkg-config git \
+      libuv1-dev libpcre2-dev zlib1g-dev \
+    && pip install --no-cache-dir meson ninja \
+    && git clone --depth 1 --branch v0.8.2 https://github.com/rizinorg/rizin /tmp/rizin \
+    && cd /tmp/rizin && meson setup build --buildtype=release \
+    && meson compile -C build && meson install -C build && ldconfig \
+    && git clone --depth 1 --branch v0.8.0 --recurse-submodules \
+         https://github.com/rizinorg/rz-ghidra /tmp/rzg \
+    && cd /tmp/rzg && cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release \
+         -DCMAKE_PREFIX_PATH=/usr/local -DBUILD_CUTTER_PLUGIN=OFF \
+    && cmake --build build && cmake --install build && ldconfig \
+    && rizin -v \
+    && rm -rf /tmp/rizin /tmp/rzg \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN pip install --no-cache-dir \
     fastmcp \
     "mcp-knowledge-base @ https://github.com/jasonuithol/mcp-knowledge-base/archive/refs/tags/v0.2.1.tar.gz"
