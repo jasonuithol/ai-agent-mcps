@@ -2,4 +2,4 @@ mcp-knowledge-base[server] @ https://github.com/jasonuithol/mcp-knowledge-base/a
 chromadb>=1.0.0
 fastmcp>=2.0.0
 uvicorn>=0.34.0
-onnxruntime>=1.21.0,<1.22.0
+onnxruntime-gpu>=1.21.0,<1.22.0

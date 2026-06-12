@@ -1,0 +1,4 @@
+# LuaCustomMemberFunctions.hpp
+
+Source: `/home/jason/Projects/Advanced-SCUM-Modding/third_party/UE4SS/UE4SS/include/LuaCustomMemberFunctions.hpp`
+Kind: file

@@ -120,6 +120,74 @@ else
 fi
 
 # ---------------------------------------------------------------------------
+# Seed SCUM-specific RE notes from Advanced-SCUM-Modding/docs/
+# Per the project's CLAUDE.md this is the canonical home for AOB signatures,
+# struct layouts, and RPC IDs keyed by SCUM build. Unique knowledge — no
+# upstream source for any of it.
+# ---------------------------------------------------------------------------
+
+SCUM_DOCS="$HOME/Projects/Advanced-SCUM-Modding/docs"
+if [ -d "$SCUM_DOCS" ] && [ -n "$(find "$SCUM_DOCS" -name '*.md' -print -quit 2>/dev/null)" ]; then
+    echo ""
+    echo "=== Seeding Advanced-SCUM-Modding/docs (topic=scum-re-notes) ==="
+    call_tool "$BASE" "$K_SESSION" 20 "seed_docs" \
+        "{\"docs_path\":\"/opt/projects/Advanced-SCUM-Modding/docs\",\"topic\":\"scum-re-notes\"}"
+else
+    echo ""
+    echo "=== Skipping Advanced-SCUM-Modding/docs (none present) ==="
+fi
+
+# ---------------------------------------------------------------------------
+# Seed reference native mod (Mods/DeveloperMode) as the canonical pattern:
+# build.sh template, AOB-scan + sanity-check approach, log conventions.
+# ---------------------------------------------------------------------------
+
+DEV_MOD="$HOME/Projects/Advanced-SCUM-Modding/Mods/DeveloperMode"
+if [ -d "$DEV_MOD" ]; then
+    echo ""
+    echo "=== Seeding Mods/DeveloperMode (topic=scum-mod-examples) ==="
+    call_tool "$BASE" "$K_SESSION" 21 "seed_docs" \
+        "{\"docs_path\":\"/opt/projects/Advanced-SCUM-Modding/Mods/DeveloperMode\",\"topic\":\"scum-mod-examples\"}"
+else
+    echo ""
+    echo "=== Skipping Mods/DeveloperMode (not present) ==="
+fi
+
+# ---------------------------------------------------------------------------
+# Seed UE4SS upstream reference cppmods (EventViewerMod, KismetDebuggerMod).
+# These are the canonical UE4SS-blessed examples of how a C++ mod is
+# structured (CMakeLists + include/ + src/ + README.md).
+# ---------------------------------------------------------------------------
+
+CPPMODS="$HOME/Projects/Advanced-SCUM-Modding/third_party/UE4SS/cppmods"
+if [ -d "$CPPMODS" ]; then
+    echo ""
+    echo "=== Seeding UE4SS cppmods (topic=ue4ss-cppmod-examples) ==="
+    call_tool "$BASE" "$K_SESSION" 22 "seed_docs" \
+        "{\"docs_path\":\"/opt/projects/Advanced-SCUM-Modding/third_party/UE4SS/cppmods\",\"topic\":\"ue4ss-cppmod-examples\"}"
+else
+    echo ""
+    echo "=== Skipping UE4SS cppmods (not present) ==="
+fi
+
+# ---------------------------------------------------------------------------
+# Seed Doxygen-generated UE4SS C++ API reference (one .md per class/struct/
+# namespace/file). Populate via knowledge/ingest-cpp-api.sh — that script
+# runs doxygen against UE4SS/include/ and converts the XML to markdown.
+# ---------------------------------------------------------------------------
+
+CPP_API_DOCS="$HOME/Projects/mcp-ue4ss/docs/ue4ss-cpp-api"
+if [ -d "$CPP_API_DOCS" ] && [ -n "$(find "$CPP_API_DOCS" -name '*.md' -print -quit 2>/dev/null)" ]; then
+    echo ""
+    echo "=== Seeding UE4SS C++ API reference (topic=ue4ss-cpp-api-generated) ==="
+    call_tool "$BASE" "$K_SESSION" 23 "seed_docs" \
+        "{\"docs_path\":\"/opt/projects/mcp-ue4ss/docs/ue4ss-cpp-api\",\"topic\":\"ue4ss-cpp-api-generated\"}"
+else
+    echo ""
+    echo "=== Skipping UE4SS C++ API reference (run ./knowledge/ingest-cpp-api.sh to generate it) ==="
+fi
+
+# ---------------------------------------------------------------------------
 # Stats
 # ---------------------------------------------------------------------------
 

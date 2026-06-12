@@ -1,0 +1,46 @@
+# Doxyfile for UE4SS C++ API reference generation.
+# Output is XML only — consumed by ingest/doxygen-xml-to-md.py which emits
+# markdown into ../docs/ue4ss-cpp-api/. HTML/LaTeX/etc are disabled for speed.
+
+PROJECT_NAME           = "UE4SS C++ API"
+PROJECT_BRIEF          = "Public C++ API surface for native UE4SS mods"
+OUTPUT_DIRECTORY       = ../knowledge/.doxygen-out
+CREATE_SUBDIRS         = NO
+
+# Source — only the public include dir. The src/ implementation tree is
+# mostly Lua-bridge plumbing and dilutes signal for C++ mod authors.
+INPUT                  = ../../Advanced-SCUM-Modding/third_party/UE4SS/UE4SS/include
+FILE_PATTERNS          = *.hpp *.h
+RECURSIVE              = YES
+
+# Parse C-style `// foo` comments as documentation even without /// or @brief
+# so we capture the terse one-liners that dominate UE4SS headers.
+JAVADOC_AUTOBRIEF      = YES
+MULTILINE_CPP_IS_BRIEF = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = YES
+
+# Output: XML only.
+GENERATE_HTML          = NO
+GENERATE_LATEX         = NO
+GENERATE_XML           = YES
+XML_OUTPUT             = xml
+XML_PROGRAMLISTING     = NO
+
+# Less noise.
+QUIET                  = YES
+WARNINGS               = NO
+WARN_IF_UNDOCUMENTED   = NO
+WARN_IF_DOC_ERROR      = NO
+
+# Don't try to follow @ref / #include into the wider Unreal source tree.
+SEARCH_INCLUDES        = NO
+
+# Macros that would otherwise eat the rest of a function decl.
+ENABLE_PREPROCESSING   = YES
+MACRO_EXPANSION        = YES
+EXPAND_ONLY_PREDEF     = YES
+PREDEFINED             = "RC_UE4SS_API=" \
+                         "RC_API=" \
+                         "UE4SS_API="

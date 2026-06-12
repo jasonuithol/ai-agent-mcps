@@ -1,16 +1,16 @@
-FROM docker.io/python:3.12-slim
+FROM docker.io/nvidia/cuda:12.8.1-cudnn-runtime-ubuntu24.04
 
-# curl needed for the embedding-model fetch below; ca-certificates is
-# already present in python:slim. Python + pip come with the base image,
-# so no apt-installed Python is needed.
-RUN apt-get update && apt-get install -y --no-install-recommends curl \
+# Install Python + curl/ca-certs (curl needed for the model fetch below).
+# The CUDA base image is bare Ubuntu and ships no Python.
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3 python3-pip curl ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /opt/mcp-knowledge
 
 # Install dependencies first (layer caching)
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --break-system-packages -r requirements.txt
 
 # Pre-fetch the all-MiniLM-L6-v2 embedding model so chromadb finds it
 # locally — no host mount, no first-run download.
