@@ -146,16 +146,31 @@ _report = _reporter.report
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _project_dir(project: str) -> Path:
-    if not project or "/" in project or ".." in project:
+    """Resolve `project` to an absolute path under PROJECTS_DIR.
+
+    Accepts a bare top-level name (`betl`) or a forward-slash subpath
+    (`Advanced-SCUM-Modding/Mods/DeveloperMode`). `..` is rejected; the
+    resolved path is rejected if it escapes PROJECTS_DIR.
+    """
+    if not project or ".." in project.split("/") or project.startswith("/"):
         raise ValueError(f"Invalid project name: {project!r}")
-    d = PROJECTS_DIR / project
+    d = (PROJECTS_DIR / project).resolve()
+    try:
+        d.relative_to(PROJECTS_DIR.resolve())
+    except ValueError:
+        raise ValueError(f"Project path escapes {PROJECTS_DIR}: {project!r}")
     if not d.is_dir():
         raise FileNotFoundError(f"Project directory not found: {d}")
     return d
 
 
 def _detect_backend(pd: Path) -> str:
-    """Return one of: 'cmake', 'meson', 'make', 'direct'."""
+    """Return one of: 'cmake', 'meson', 'make', 'script', 'direct'.
+
+    'script' = a plain `build.sh` at the project root (no cmake/meson/make
+    present). Used by projects with a custom shell-driven build, including
+    cross-compile targets that set $CXX themselves.
+    """
     if (pd / "CMakeLists.txt").exists():
         return "cmake"
     if (pd / "meson.build").exists():
@@ -163,7 +178,46 @@ def _detect_backend(pd: Path) -> str:
     for name in ("Makefile", "makefile", "GNUmakefile"):
         if (pd / name).exists():
             return "make"
+    if (pd / "build.sh").is_file():
+        return "script"
     return "direct"
+
+
+# ── Cross-compile toolchains ─────────────────────────────────────────────────
+#
+# `target="native"` is the default and means "Linux amd64, use the
+# container's default gcc/clang". `target="win64"` routes the build
+# through llvm-mingw (installed at /opt/llvm-mingw, see service/Dockerfile)
+# to produce a Windows x86_64 PE/COFF DLL or EXE.
+#
+# Only the `script` backend honours non-native targets today: the
+# convention is each project's own `build.sh` reads `$CXX`/`$CC`/`$AR`/`$RC`
+# from the environment (the SCUM mods at `Advanced-SCUM-Modding/Mods/*`
+# follow this pattern). Cmake/meson/make + win64 would need a per-backend
+# toolchain file; add when the first project needs it.
+
+LLVM_MINGW_BIN = "/opt/llvm-mingw/bin"
+
+CROSS_TOOLCHAINS: dict[str, dict[str, str]] = {
+    "native": {},
+    "win64": {
+        "CC":     f"{LLVM_MINGW_BIN}/x86_64-w64-mingw32-clang",
+        "CXX":    f"{LLVM_MINGW_BIN}/x86_64-w64-mingw32-clang++",
+        "AR":     f"{LLVM_MINGW_BIN}/x86_64-w64-mingw32-ar",
+        "RC":     f"{LLVM_MINGW_BIN}/x86_64-w64-mingw32-windres",
+        "STRIP":  f"{LLVM_MINGW_BIN}/x86_64-w64-mingw32-strip",
+        "TARGET": "win64",
+    },
+}
+
+
+def _toolchain_env(target: str) -> dict[str, str]:
+    if target not in CROSS_TOOLCHAINS:
+        raise ValueError(
+            f"unsupported target: {target!r}. "
+            f"Supported: {sorted(CROSS_TOOLCHAINS)}"
+        )
+    return dict(CROSS_TOOLCHAINS[target])
 
 
 def _run(
@@ -624,9 +678,14 @@ async def _enumerate_meson_tests(pd: Path, build_dir: str, env: dict | None) -> 
 mcp = FastMCP(
     name="c-build",
     instructions=(
-        "Tools for building, testing, linting, analysing, and debugging C projects. "
+        "Tools for building, testing, linting, analysing, and debugging C/C++ projects. "
         "build auto-detects CMakeLists.txt → cmake, meson.build → meson, "
-        "Makefile → make, otherwise compiles *.c directly with gcc. "
+        "Makefile → make, build.sh → script (custom shell build), otherwise "
+        "compiles *.c directly with gcc. build accepts a target= arg: "
+        "'native' (default, Linux amd64) or 'win64' (cross-compile to "
+        "Windows x86_64 via llvm-mingw; script backend only). "
+        "Projects may be top-level (`betl`) or subpaths "
+        "(`Advanced-SCUM-Modding/Mods/DeveloperMode`). "
         "analyze(asan) finds memory bugs in instrumented project code but "
         "uses handle_segv=0 to avoid DEADLYSIGNAL loops, so crashes give "
         "rc=139 with no stack — use debug(test) to get a gdb backtrace for "
@@ -639,17 +698,24 @@ mcp = FastMCP(
 # ── build ─────────────────────────────────────────────────────────────────────
 
 @mcp.tool()
-async def build(project: str) -> str:
+async def build(project: str, target: str = "native") -> str:
     """
-    Build a C project, auto-detecting the build system.
+    Build a C/C++ project, auto-detecting the build system.
 
     Detection order: CMakeLists.txt → cmake (Ninja, build dir at build/);
-    meson.build → meson (build dir at build/); Makefile → make; otherwise
-    compile every *.c under src/ (or root) directly with gcc into
-    build-make/<project>.
+    meson.build → meson (build dir at build/); Makefile → make;
+    build.sh → script (`bash ./build.sh`, honours $CXX/$CC from target);
+    otherwise compile every *.c under src/ (or root) directly with gcc
+    into build-make/<project>.
 
     Args:
-        project: Folder name under ~/Projects (no path separators).
+        project: Project path under ~/Projects. Top-level folder name
+            (`betl`) or forward-slash subpath
+            (`Advanced-SCUM-Modding/Mods/DeveloperMode`).
+        target: Build target. `native` (default) = Linux amd64. `win64` =
+            cross-compile to Windows x86_64 via llvm-mingw. Non-native
+            targets currently work with the `script` backend only —
+            the project's build.sh must honour $CXX/$CC.
 
     Returns the full build log. Run before run_tests / lint / analyze.
     """
@@ -657,12 +723,32 @@ async def build(project: str) -> str:
         pd = _project_dir(project)
     except Exception as e:
         result = f"BUILD FAILED\n\n{e}"
-        _report("build", {"project": project}, result, False)
+        _report("build", {"project": project, "target": target}, result, False)
+        return result
+
+    try:
+        tc_env = _toolchain_env(target)
+    except Exception as e:
+        result = f"BUILD FAILED\n\n{e}"
+        _report("build", {"project": project, "target": target}, result, False)
         return result
 
     backend = _detect_backend(pd)
-    deps_env = _deps_env(pd) or None
-    lines = [f"Backend: {backend}"]
+
+    # Merge deps env (CPATH/LIBRARY_PATH/PKG_CONFIG_PATH) with toolchain env
+    # (CC/CXX/AR/RC for cross-compile). Toolchain wins on collision.
+    env = {**(_deps_env(pd) or {}), **tc_env} or None
+
+    lines = [f"Backend: {backend}", f"Target: {target}"]
+
+    if target != "native" and backend != "script":
+        result = (
+            f"BUILD FAILED ✗\n\nTarget {target!r} is only supported by the "
+            f"`script` backend (project root has a `build.sh` honouring "
+            f"$CXX/$CC). Detected backend: {backend!r}."
+        )
+        _report("build", {"project": project, "target": target, "backend": backend}, result, False)
+        return result
 
     if backend == "cmake":
         build_dir = pd / "build"
@@ -670,45 +756,54 @@ async def build(project: str) -> str:
             ok, out = await _run_async(
                 ["cmake", "-S", ".", "-B", "build", "-G", "Ninja"],
                 cwd=str(pd),
-                env=deps_env,
+                env=env,
             )
             lines.append(f"-- cmake configure ({'ok' if ok else 'failed'}) --\n{out}")
             if not ok:
                 result = "BUILD FAILED ✗\n\n" + "\n\n".join(lines)
-                _report("build", {"project": project}, result, False)
+                _report("build", {"project": project, "target": target}, result, False)
                 return result
-        ok, out = await _run_async(["cmake", "--build", "build"], cwd=str(pd), env=deps_env)
+        ok, out = await _run_async(["cmake", "--build", "build"], cwd=str(pd), env=env)
         lines.append(f"-- cmake build ({'ok' if ok else 'failed'}) --\n{out}")
 
     elif backend == "meson":
         build_dir = pd / "build"
         if not (build_dir / "build.ninja").exists():
-            ok, out = await _run_async(["meson", "setup", "build"], cwd=str(pd), env=deps_env)
+            ok, out = await _run_async(["meson", "setup", "build"], cwd=str(pd), env=env)
             lines.append(f"-- meson setup ({'ok' if ok else 'failed'}) --\n{out}")
             if not ok:
                 result = "BUILD FAILED ✗\n\n" + "\n\n".join(lines)
-                _report("build", {"project": project}, result, False)
+                _report("build", {"project": project, "target": target}, result, False)
                 return result
-        ok, out = await _run_async(["meson", "compile", "-C", "build"], cwd=str(pd), env=deps_env)
+        ok, out = await _run_async(["meson", "compile", "-C", "build"], cwd=str(pd), env=env)
         lines.append(f"-- meson compile ({'ok' if ok else 'failed'}) --\n{out}")
 
     elif backend == "make":
-        ok, out = await _run_async(["make"], cwd=str(pd), env=deps_env)
+        ok, out = await _run_async(["make"], cwd=str(pd), env=env)
         lines.append(f"-- make ({'ok' if ok else 'failed'}) --\n{out}")
+
+    elif backend == "script":
+        # Project owns the build. We provide $CXX/$CC/$AR/$RC via tc_env;
+        # the script can override or ignore. Stdout+stderr capture is
+        # routed through _run_async like every other backend.
+        ok, out = await _run_async(["bash", "./build.sh"], cwd=str(pd), env=env)
+        lines.append(f"-- ./build.sh ({'ok' if ok else 'failed'}) --\n{out}")
 
     else:  # direct
         sources = _gather_c_sources(pd)
         if not sources:
-            result = "BUILD FAILED ✗\n\nNo CMakeLists.txt, meson.build, Makefile, or *.c files found."
-            _report("build", {"project": project}, result, False)
+            result = "BUILD FAILED ✗\n\nNo CMakeLists.txt, meson.build, Makefile, build.sh, or *.c files found."
+            _report("build", {"project": project, "target": target}, result, False)
             return result
         out_dir = pd / "build-make"
         out_dir.mkdir(exist_ok=True)
-        out_bin = out_dir / project
+        # Use the leaf folder name for the output binary so subpath
+        # projects (Foo/Mods/Bar) don't try to write to "Foo/Mods/Bar".
+        out_bin = out_dir / pd.name
         cmd = [CC, *CFLAGS.split(), *[str(s) for s in sources], "-o", str(out_bin)]
         if LDFLAGS:
             cmd += LDFLAGS.split()
-        ok, out = await _run_async(cmd, cwd=str(pd), env=deps_env)
+        ok, out = await _run_async(cmd, cwd=str(pd), env=env)
         lines.append(
             f"-- {CC} ({'ok' if ok else 'failed'}) --\n"
             f"$ {' '.join(cmd)}\n{out}"
@@ -716,7 +811,7 @@ async def build(project: str) -> str:
 
     header = "BUILD SUCCEEDED ✓" if ok else "BUILD FAILED ✗"
     result = f"{header}\n\n" + "\n\n".join(lines)
-    _report("build", {"project": project, "backend": backend}, result, ok)
+    _report("build", {"project": project, "target": target, "backend": backend}, result, ok)
     return result
 
 
