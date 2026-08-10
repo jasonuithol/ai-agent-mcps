@@ -4,12 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "mcp-knowledge-base"
-version = "0.2.1"
-description = "Shared FastMCP + ChromaDB scaffolding for RAG-backed knowledge MCP services."
+version = "0.3.0"
+description = "Shared MCP + ChromaDB scaffolding for RAG-backed knowledge MCP services (MCP 2026-07-28, stateless)."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{name = "Jason Uithol"}]
-keywords = ["mcp", "fastmcp", "chromadb", "rag", "knowledge"]
+keywords = ["mcp", "chromadb", "rag", "knowledge"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
@@ -20,20 +20,20 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-# Server side: KnowledgeService, IngestRouter, the full ChromaDB+FastMCP stack.
+# Server side: KnowledgeService, IngestRouter, the full ChromaDB+MCP stack.
 # Reporter-only consumers (build/control sibling MCPs) skip this and only
 # pay for httpx.
 server = [
     "chromadb>=0.5",
-    "fastmcp>=2.0",
+    "mcp>=2,<3",
     "starlette>=0.37",
     "uvicorn>=0.30",
 ]
 test = ["pytest>=7"]
 
 [project.urls]
-Homepage = "https://github.com/jasonuithol/mcp-knowledge-base"
-Issues = "https://github.com/jasonuithol/mcp-knowledge-base/issues"
+Homepage = "https://github.com/jasonuithol/ai-agent-mcps"
+Issues = "https://github.com/jasonuithol/ai-agent-mcps/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/mcp_knowledge_base"]

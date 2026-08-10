@@ -19,7 +19,7 @@ import subprocess
 from pathlib import Path
 
 import psutil
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from mcp_knowledge_base import KnowledgeReporter
 
 # Auto-reap child processes so fire-and-forget Popen() calls (start_server,
@@ -49,7 +49,7 @@ _report = _reporter.report
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="valheim-control",
     instructions=(
         "Tools for controlling the Valheim server container and client process on the host. "
@@ -198,4 +198,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add valheim-control --transport http http://localhost:5173/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5173)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5173,
+        stateless_http=True,
+        json_response=True,
+    )

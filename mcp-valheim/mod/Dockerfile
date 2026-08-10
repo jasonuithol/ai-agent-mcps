@@ -21,9 +21,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # `publish` here.
 
 RUN pip install --no-cache-dir \
-    fastmcp \
+    "mcp>=2,<3" \
     httpx \
-    "mcp-knowledge-base @ https://github.com/jasonuithol/mcp-knowledge-base/archive/refs/tags/v0.2.1.tar.gz"
+    "mcp-knowledge-base @ https://github.com/jasonuithol/ai-agent-mcps/archive/refs/tags/kb-v0.3.0.tar.gz#subdirectory=mcp-knowledge-base"
 
 # ── App ───────────────────────────────────────────────────────────────────────
 

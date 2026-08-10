@@ -22,7 +22,7 @@ import re
 from typing import Any
 
 import pymssql
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -79,7 +79,7 @@ async def _to_thread(fn, *args, **kwargs):
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="db-mssql",
     instructions=(
         "SQL Server (mssql) workbench. Use list_databases / create_database / "
@@ -429,4 +429,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add db-mssql --transport http http://localhost:5189/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5189)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5189,
+        stateless_http=True,
+        json_response=True,
+    )

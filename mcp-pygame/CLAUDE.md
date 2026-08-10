@@ -30,7 +30,7 @@ accumulate as retrievable context.
 - **`knowledge/CLAUDE.md`** — design doc for the knowledge service
   (chunking strategy, ingest routing, metadata schema, known concerns).
 - **`service/mcp-service.py`** — the run_tests/lint/install_deps tools.
-- **`knowledge/mcp-service.py`** — the FastMCP query server + `/ingest`
+- **`knowledge/mcp-service.py`** — the MCP query server + `/ingest`
   HTTP endpoint.
 
 ## Conventions worth preserving

@@ -23,7 +23,7 @@ from typing import Any
 
 import psycopg
 from psycopg import sql
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -71,7 +71,7 @@ async def _to_thread(fn, *args, **kwargs):
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="db-postgres",
     instructions=(
         "PostgreSQL workbench. Use list_databases / create_database / drop_database "
@@ -418,4 +418,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add db-postgres --transport http http://localhost:5188/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5188)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5188,
+        stateless_http=True,
+        json_response=True,
+    )

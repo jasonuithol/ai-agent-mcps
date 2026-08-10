@@ -32,7 +32,7 @@ runs accumulate as retrievable context.
 - **`service/seccomp/`** — bundled seccomp profiles for the c-build
   container; today just `tsan.json` (allow-all). Loaded via
   `$SECCOMP_PROFILE` in `service/start-container.sh`; see conventions.
-- **`knowledge/mcp-service.py`** — the FastMCP query server + `/ingest`
+- **`knowledge/mcp-service.py`** — the MCP query server + `/ingest`
   HTTP endpoint.
 
 ## Conventions worth preserving

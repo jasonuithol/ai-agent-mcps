@@ -11,10 +11,10 @@ if [ ! -d "$VENV" ]; then
     python3 -m venv "$VENV"
 fi
 
-# Install/upgrade fastmcp if missing
-if ! "$VENV/bin/python" -c "import fastmcp, psutil" 2>/dev/null; then
+# Install/upgrade the MCP SDK if missing
+if ! "$VENV/bin/python" -c "import mcp, psutil" 2>/dev/null; then
     echo "Installing dependencies..."
-    "$VENV/bin/pip" install --quiet fastmcp psutil
+    "$VENV/bin/pip" install --quiet "mcp>=2,<3" psutil
 fi
 
 exec "$VENV/bin/python" "$SCRIPT_DIR/mcp-service.py"

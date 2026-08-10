@@ -1,6 +1,6 @@
 # mcp-knowledge-base
 
-Shared FastMCP + ChromaDB scaffolding for RAG-backed knowledge MCP services.
+Shared MCP + ChromaDB scaffolding for RAG-backed knowledge MCP services.
 
 Extracted from three legacy sibling projects (`claude-sandbox`,
 `claude-pygame`, `claude-dosre` — all archived) which had each grown a
@@ -14,7 +14,7 @@ its chunker, its tag taxonomy, and any bespoke MCP tools.
 
 | Module | Provides |
 |---|---|
-| `service.py` | `KnowledgeService`, `ServiceConfig` — assembles ChromaDB + FastMCP + Starlette `/ingest` into one runnable unit |
+| `service.py` | `KnowledgeService`, `ServiceConfig` — assembles ChromaDB + MCP + Starlette `/ingest` into one runnable unit |
 | `chunks.py` | `tag_key`, `tag_flags`, `upsert_chunks`, `sanitize_for_id`, `now_iso` |
 | `format.py` | `format_query_results`, `format_get_results` — header-key-driven, with a 1500-char doc display cap |
 | `ingest.py` | `IngestRouter` ABC + `make_ingest_endpoint` factory |
@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
 The tests cover the pure-Python primitives (`tag_key`, `tag_flags`,
 `sanitize_for_id`, `now_iso`, both formatters). They deliberately skip
-ChromaDB and FastMCP — those are heavyweight and belong in integration
+ChromaDB and the MCP SDK — those are heavyweight and belong in integration
 tests inside each domain service.
 
 ```bash

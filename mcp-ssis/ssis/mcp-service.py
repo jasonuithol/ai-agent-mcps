@@ -27,7 +27,7 @@ from pathlib import Path
 from typing import Any, Optional
 
 import pymssql
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
@@ -175,7 +175,7 @@ async def _to_thread(fn, *args, **kwargs):
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="db-ssis",
     instructions=(
         "SSIS-on-Linux workbench. Drop .dtsx files into the host packages/ "
@@ -451,4 +451,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add db-ssis --transport http http://localhost:5190/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5190)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5190,
+        stateless_http=True,
+        json_response=True,
+    )

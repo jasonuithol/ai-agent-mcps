@@ -1,10 +1,10 @@
-"""mcp-knowledge-base: shared FastMCP + ChromaDB scaffolding for RAG MCP services.
+"""mcp-knowledge-base: shared MCP + ChromaDB scaffolding for RAG MCP services.
 
 Public API:
 
     KnowledgeService, ServiceConfig
         The main entry points. A ServiceConfig captures the per-domain
-        wiring; a KnowledgeService assembles ChromaDB, FastMCP and a
+        wiring; a KnowledgeService assembles ChromaDB, an MCP server and a
         Starlette /ingest endpoint into one runnable unit.
 
     IngestRouter, make_ingest_endpoint
@@ -24,7 +24,7 @@ Public API:
 
 # Eager imports: light-weight modules used by both server and client sides.
 # Heavy server-only modules (service, ingest) are lazy-loaded below so that
-# reporter-only consumers don't have to install chromadb/fastmcp/starlette.
+# reporter-only consumers don't have to install chromadb/mcp/starlette.
 from .chunks import (
     now_iso,
     sanitize_for_id,

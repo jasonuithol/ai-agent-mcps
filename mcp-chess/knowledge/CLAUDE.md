@@ -10,7 +10,7 @@ identifies origin when callers care.
 ## Built on
 
 [`mcp-knowledge-base`](https://github.com/jasonuithol/mcp-knowledge-base)
-v0.2.1 supplies the FastMCP + ChromaDB + `/ingest` scaffolding.
+v0.2.1 supplies the MCP + ChromaDB + `/ingest` scaffolding.
 This service adds chess-specific tooling:
 
 - `seed_docs(docs_path, topic)` — markdown ingester, chunks at `## `.

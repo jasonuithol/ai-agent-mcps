@@ -18,8 +18,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Python deps for the MCP service itself. pytest/ruff are not installed here —
 # they go into each project's .venv-mcp so per-project versions can differ.
 RUN pip install --no-cache-dir \
-    fastmcp \
-    "mcp-knowledge-base @ https://github.com/jasonuithol/mcp-knowledge-base/archive/refs/tags/v0.2.1.tar.gz"
+    "mcp>=2,<3" \
+    "mcp-knowledge-base @ https://github.com/jasonuithol/ai-agent-mcps/archive/refs/tags/kb-v0.3.0.tar.gz#subdirectory=mcp-knowledge-base"
 
 WORKDIR /app
 COPY mcp-service.py .

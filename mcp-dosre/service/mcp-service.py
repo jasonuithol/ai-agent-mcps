@@ -23,7 +23,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from mcp_knowledge_base import KnowledgeReporter
 
 # ── Config ────────────────────────────────────────────────────────────────────
@@ -95,7 +95,7 @@ async def _run_async(cmd: list[str], input_bytes: bytes | None = None):
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="dos-re",
     instructions=(
         "Binary reverse-engineering tools for DOS-era files. Read-only; "
@@ -754,4 +754,10 @@ if __name__ == "__main__":
     print("  claude mcp add dos-re --transport http http://localhost:5175/mcp")
     print()
     sys.stdout.flush()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5175)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5175,
+        stateless_http=True,
+        json_response=True,
+    )

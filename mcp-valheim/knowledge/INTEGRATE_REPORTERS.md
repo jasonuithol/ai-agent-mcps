@@ -75,7 +75,7 @@ mcp-knowledge-base @ git+https://github.com/.../mcp-knowledge-base.git@v0.2.1
 ```
 
 The reporter itself only depends on `httpx`; the heavier server-side
-dependencies (chromadb, fastmcp, …) are gated behind the `[server]`
+dependencies (chromadb, mcp, …) are gated behind the `[server]`
 extra and aren't pulled in for reporter consumers.
 
 ---

@@ -119,13 +119,13 @@ mcp-valheim/knowledge/
 ├── Dockerfile
 ├── build-container.sh
 ├── start-container.sh
-├── mcp-service.py         ← FastMCP server (query tools) + /ingest HTTP endpoint
+├── mcp-service.py         ← MCP server (query tools) + /ingest HTTP endpoint
 ├── ingest/
 │   ├── router.py          ← decides what to do with each payload by tool name
 │   ├── chunker.py         ← splits decompiled source, logs, code into chunks
 │   └── extractors.py      ← source-specific extraction (errors, methods, patterns)
 ├── knowledge/             ← ChromaDB persistent storage (mounted volume, gitignored)
-└── requirements.txt       ← fastmcp, chromadb, httpx
+└── requirements.txt       ← mcp (SDK v2), chromadb, httpx
 ```
 
 ---
@@ -134,7 +134,7 @@ mcp-valheim/knowledge/
 
 | Component | Choice | Rationale |
 |-----------|--------|-----------|
-| MCP framework | FastMCP | Same as mcp-build — consistent stack |
+| MCP framework | Official MCP Python SDK (`mcp` v2, spec 2026-07-28, stateless) | Same as mcp-build — consistent stack |
 | Vector DB | ChromaDB (PersistentClient) | File-based, no server, Python-native, good enough for this scale |
 | Embeddings | ChromaDB's default (all-MiniLM-L6-v2) | Runs locally in the container, no API key needed, fast |
 | Chunking | Custom per source type | Modding knowledge has natural boundaries (class, method, pattern) |
@@ -284,7 +284,7 @@ Every chunk stored in ChromaDB carries:
 ### Dockerfile
 
 Based on `python:3.12-slim-bookworm` (same as mcp-build). Installs:
-- `fastmcp` — MCP server
+- `mcp` (SDK v2) — MCP server
 - `chromadb` — vector DB + built-in embeddings
 - `httpx` — for calling mcp-build (decompile during seeding)
 

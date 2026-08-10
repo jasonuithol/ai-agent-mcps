@@ -22,7 +22,7 @@ from datetime import datetime
 from pathlib import Path
 
 import httpx
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from mcp_knowledge_base import KnowledgeReporter
 
 # ── Paths ─────────────────────────────────────────────────────────────────────
@@ -134,7 +134,7 @@ async def _run_async(cmd: list[str], cwd: str | None, log_path: Path) -> tuple[b
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="valheim-mod",
     instructions=(
         "Valheim mod ops: BepInEx deploy (client + server), Thunderstore "
@@ -607,4 +607,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add valheim-mod --transport http http://localhost:5182/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5182)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5182,
+        stateless_http=True,
+        json_response=True,
+    )

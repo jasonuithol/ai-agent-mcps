@@ -279,28 +279,27 @@ BepInEx logs are at:
 
 ## Testing the MCP Servers
 
-To test from the host without Claude Code, use the helper scripts:
+To test from the host without Claude Code (stateless MCP 2026-07-28 — one
+POST per request, no handshake, no session id):
 
 ```bash
-# Get a session ID
-curl -i -H 'Accept: application/json, text/event-stream' \
-  -X POST -H 'Content-Type: application/json' \
-  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"0"}}}' \
-  http://localhost:5182/mcp | grep -i mcp-session-id
+# List tools
+curl -s -X POST http://localhost:5182/mcp \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -H 'MCP-Protocol-Version: 2026-07-28' \
+  -H 'Mcp-Method: tools/list' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{"_meta":{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{"name":"test","version":"0"},"io.modelcontextprotocol/clientCapabilities":{}}}}' \
+  | python3 -c "import sys,json; [print(t['name']) for t in json.load(sys.stdin)['result']['tools']]"
 
-# List tools (requires httpx — available in .venv)
-# httpx is available wherever claude-sandbox-core's tooling runs;
-# install it ad-hoc with `pip install httpx` if needed.
-python3 - <<'EOF'
-import httpx, json
-base = 'http://localhost:5182/mcp'  # or 5173 for mcp-control, 5184 for mcp-knowledge
-h = {'Content-Type': 'application/json', 'Accept': 'application/json, text/event-stream'}
-r = httpx.post(base, headers=h, json={'jsonrpc':'2.0','id':1,'method':'initialize','params':{'protocolVersion':'2024-11-05','capabilities':{},'clientInfo':{'name':'test','version':'0'}}})
-h['mcp-session-id'] = r.headers['mcp-session-id']
-r2 = httpx.post(base, headers=h, json={'jsonrpc':'2.0','id':2,'method':'tools/list','params':{}})
-tools = json.loads(r2.text.split('data: ')[1])['result']['tools']
-for t in tools: print(t['name'])
-EOF
+# Call a tool (note the extra Mcp-Name header naming the tool)
+curl -s -X POST http://localhost:5184/mcp \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json, text/event-stream' \
+  -H 'MCP-Protocol-Version: 2026-07-28' \
+  -H 'Mcp-Method: tools/call' \
+  -H 'Mcp-Name: stats' \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"stats","arguments":{},"_meta":{"io.modelcontextprotocol/protocolVersion":"2026-07-28","io.modelcontextprotocol/clientInfo":{"name":"test","version":"0"},"io.modelcontextprotocol/clientCapabilities":{}}}}'
 ```
 
 ---

@@ -27,7 +27,7 @@ import threading
 import time
 from pathlib import Path
 
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from mcp_knowledge_base import KnowledgeReporter
 
 # ── Config ────────────────────────────────────────────────────────────────────
@@ -675,7 +675,7 @@ async def _enumerate_meson_tests(pd: Path, build_dir: str, env: dict | None) -> 
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="c-build",
     instructions=(
         "Tools for building, testing, linting, analysing, and debugging C/C++ projects. "
@@ -2678,4 +2678,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add c-build --transport http http://localhost:5192/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5192)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5192,
+        stateless_http=True,
+        json_response=True,
+    )

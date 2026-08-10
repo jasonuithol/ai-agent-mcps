@@ -20,7 +20,7 @@ import subprocess
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from mcp_knowledge_base import KnowledgeReporter
 
 # ── Config ────────────────────────────────────────────────────────────────────
@@ -100,7 +100,7 @@ def _verdict(success: bool, action: str) -> str:
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="dotnet",
     instructions=(
         "Generic .NET build / test / package / analyze tools. All tools return "
@@ -603,4 +603,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add dotnet --transport http http://localhost:5202/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5202)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5202,
+        stateless_http=True,
+        json_response=True,
+    )

@@ -1,2 +1,2 @@
-fastmcp
+mcp>=2,<3
 psutil

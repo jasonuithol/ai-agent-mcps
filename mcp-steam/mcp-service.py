@@ -15,12 +15,12 @@ Register with Claude Code:
 import subprocess
 
 import psutil
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="steam",
     instructions=(
         "Tools for controlling the Steam client process on the host. "
@@ -87,4 +87,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add steam --transport http http://localhost:5177/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5177)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5177,
+        stateless_http=True,
+        json_response=True,
+    )

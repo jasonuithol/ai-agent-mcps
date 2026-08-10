@@ -132,13 +132,13 @@ so the boolean keys are how `ask_tagged` works.
 mcp-c/knowledge/
 ├── CLAUDE.md              ← this file
 ├── Dockerfile             ← CUDA base for GPU-accelerated embeddings
-├── requirements.txt       ← fastmcp, chromadb, mcp-knowledge-base, onnxruntime-gpu
+├── requirements.txt       ← mcp (SDK v2), chromadb, mcp-knowledge-base, onnxruntime-gpu
 ├── build-container.sh     ← builds image
 ├── start-container.sh     ← runs with --device nvidia.com/gpu=all
 ├── setup-gpu.sh           ← one-shot NVIDIA Container Toolkit install
 ├── reset-knowledge.sh     ← wipe ChromaDB and restart
 ├── seed.sh                ← seed docs (and optionally project sources)
-├── mcp-service.py         ← FastMCP server + /ingest HTTP endpoint
+├── mcp-service.py         ← MCP server + /ingest HTTP endpoint
 ├── ingest/
 │   ├── chunker.py         ← C source chunking + tag flag scaffolding
 │   ├── extractors.py      ← C PATTERN_TAGS, regex node walker

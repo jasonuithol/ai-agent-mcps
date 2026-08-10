@@ -30,7 +30,7 @@ from typing import Any
 import chess
 import chess.engine
 import chess.pgn
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from mcp_knowledge_base import KnowledgeReporter
 
 # ── Config ────────────────────────────────────────────────────────────────────
@@ -121,7 +121,7 @@ async def _to_thread(fn, *args, **kwargs):
 
 # ── MCP server ────────────────────────────────────────────────────────────────
 
-mcp = FastMCP(
+mcp = MCPServer(
     name="chess-engine",
     instructions=(
         "Tools for chess engine development: UCI engine registry, position analysis, "
@@ -735,4 +735,10 @@ if __name__ == "__main__":
     print("Register with Claude Code:")
     print("  claude mcp add chess-engine --transport http http://localhost:5180/mcp")
     print()
-    mcp.run(transport="streamable-http", host="0.0.0.0", port=5180)
+    mcp.run(
+        transport="streamable-http",
+        host="0.0.0.0",
+        port=5180,
+        stateless_http=True,
+        json_response=True,
+    )

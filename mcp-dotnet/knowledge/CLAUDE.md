@@ -112,11 +112,11 @@ a string literal could over-extend a chunk. Embedding query is robust.
 mcp-dotnet/knowledge/
 ├── CLAUDE.md              ← this file
 ├── Dockerfile             ← CUDA base for GPU-accelerated embeddings
-├── requirements.txt       ← fastmcp, chromadb, mcp-knowledge-base, onnxruntime-gpu
+├── requirements.txt       ← mcp (SDK v2), chromadb, mcp-knowledge-base, onnxruntime-gpu
 ├── build-container.sh
 ├── start-container.sh     ← runs with --device nvidia.com/gpu=all
 ├── seed.sh                ← edit to add your projects
-├── mcp-service.py         ← FastMCP server + /ingest endpoint
+├── mcp-service.py         ← MCP server + /ingest endpoint
 ├── ingest/
 │   ├── chunker.py         ← C# source + markdown chunking
 │   ├── extractors.py      ← PATTERN_TAGS, regex node walker

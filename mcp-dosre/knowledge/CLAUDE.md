@@ -123,11 +123,11 @@ doesn't grow from a source tree. Everything enters via ingest or `note`.
 mcp-dos-re-knowledge/
 ├── CLAUDE.md              ← this file
 ├── Dockerfile             ← CUDA base (shared embedding stack with mcp-knowledge)
-├── requirements.txt       ← fastmcp, chromadb, httpx, uvicorn, onnxruntime-gpu
+├── requirements.txt       ← mcp (SDK v2), chromadb, httpx, uvicorn, onnxruntime-gpu
 ├── build-container.sh     ← links sibling model (pygame or sandbox) or downloads
 ├── start-container.sh     ← --device nvidia.com/gpu=all, PORT=5176, COLLECTION=dosre_knowledge
 ├── reset-knowledge.sh     ← wipe ChromaDB and restart
-├── mcp-service.py         ← FastMCP + /ingest endpoint
+├── mcp-service.py         ← MCP server + /ingest endpoint
 ├── ingest/
 │   ├── chunker.py         ← md5-keyed chunk builders (8 kinds: identify, disassembly, note, strings, text_view, pe-info, pe-sections, pe-disasm)
 │   └── router.py          ← selective ingest routing

@@ -32,9 +32,9 @@ RUN apt-get purge -y --auto-remove build-essential git \
 # Python deps for the MCP service. python-chess gives us UCI subprocess
 # management, FEN/PGN/SAN, perft, Polyglot books, Syzygy tablebases.
 RUN pip install --no-cache-dir \
-        fastmcp \
+        "mcp>=2,<3" \
         chess \
-        "mcp-knowledge-base @ https://github.com/jasonuithol/mcp-knowledge-base/archive/refs/tags/v0.2.1.tar.gz"
+        "mcp-knowledge-base @ https://github.com/jasonuithol/ai-agent-mcps/archive/refs/tags/kb-v0.3.0.tar.gz#subdirectory=mcp-knowledge-base"
 
 WORKDIR /app
 COPY mcp-service.py .

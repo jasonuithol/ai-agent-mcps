@@ -1,6 +1,6 @@
 """Smoke tests covering the pure-Python primitives.
 
-Deliberately avoids ChromaDB and FastMCP — those have heavyweight setup
+Deliberately avoids ChromaDB and the MCP SDK — those have heavyweight setup
 (persistence, ONNX models). The KnowledgeService end-to-end belongs in an
 integration test suite that lives outside this package.
 """

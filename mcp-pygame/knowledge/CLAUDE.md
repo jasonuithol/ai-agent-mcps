@@ -120,13 +120,13 @@ non-alphanumeric → underscore. ChromaDB's metadata filter has no
 mcp-knowledge/
 ├── CLAUDE.md              ← this file
 ├── Dockerfile             ← CUDA base for GPU-accelerated embeddings
-├── requirements.txt       ← fastmcp, chromadb, httpx, uvicorn, onnxruntime-gpu
+├── requirements.txt       ← mcp (SDK v2), chromadb, httpx, uvicorn, onnxruntime-gpu
 ├── build-container.sh     ← downloads (or links) the embedding model, builds image
 ├── start-container.sh     ← runs with --device nvidia.com/gpu=all
 ├── setup-gpu.sh           ← one-shot NVIDIA Container Toolkit install
 ├── reset-knowledge.sh     ← wipe ChromaDB and restart
 ├── seed.sh                ← seed docs + UltimatePyve source
-├── mcp-service.py         ← FastMCP server + /ingest HTTP endpoint
+├── mcp-service.py         ← MCP server + /ingest HTTP endpoint
 ├── ingest/
 │   ├── chunker.py         ← Python source chunking + tag flag scaffolding
 │   ├── extractors.py      ← pygame PATTERN_TAGS, ast node walker, pytest report parser

@@ -2,8 +2,8 @@
 
 A KnowledgeService wraps:
   - a ChromaDB persistent collection
-  - a FastMCP server (with optional default tools)
-  - a Starlette ASGI app that mounts the FastMCP HTTP transport at /mcp
+  - an MCP server (with optional default tools)
+  - a Starlette ASGI app that mounts the MCP streamable-HTTP transport at /mcp
     and an optional /ingest endpoint backed by an IngestRouter
 
 Domain-side usage (sketch)::
@@ -40,7 +40,7 @@ from dataclasses import dataclass, field
 from typing import Any, Callable
 
 import chromadb
-from fastmcp import FastMCP
+from mcp.server.mcpserver import MCPServer
 from starlette.applications import Starlette
 from starlette.routing import Mount, Route
 
@@ -54,7 +54,7 @@ class ServiceConfig:
     """Configuration for a :class:`KnowledgeService`.
 
     Attributes:
-        name: FastMCP server name (e.g. ``"pygame-knowledge"``). Surfaced
+        name: MCP server name (e.g. ``"pygame-knowledge"``). Surfaced
             to MCP clients.
         collection_name: ChromaDB collection name. Persistent across runs.
         port: HTTP listen port.
@@ -111,7 +111,7 @@ class ServiceConfig:
 
 
 class KnowledgeService:
-    """ChromaDB + FastMCP + /ingest, packaged as one runnable unit."""
+    """ChromaDB + MCP + /ingest, packaged as one runnable unit."""
 
     #: Names of the tools registered by :meth:`register_default_tools` when
     #: no explicit include/exclude is given.
@@ -139,7 +139,7 @@ class KnowledgeService:
         mcp_kwargs: dict[str, Any] = {}
         if config.instructions:
             mcp_kwargs["instructions"] = config.instructions
-        self.mcp = FastMCP(config.name, **mcp_kwargs)
+        self.mcp = MCPServer(config.name, **mcp_kwargs)
 
         self._router: IngestRouter | None = None
 
@@ -396,10 +396,22 @@ class KnowledgeService:
     # ------------------------------------------------------------------
 
     def build_app(self) -> Starlette:
-        """Build the Starlette ASGI app combining the FastMCP /mcp transport
+        """Build the Starlette ASGI app combining the MCP /mcp transport
         with /ingest (if a router has been attached).
         """
-        mcp_app = self.mcp.http_app("/mcp")
+        import contextlib
+
+        # host= only controls DNS-rebinding auto-protection; 0.0.0.0 keeps it
+        # off, matching how these services have always been exposed.
+        # max_request_body_size: seed tools (e.g. seed_decompile) POST whole
+        # decompiled assemblies, far beyond the SDK's 4 MiB default.
+        mcp_app = self.mcp.streamable_http_app(
+            streamable_http_path="/mcp",
+            stateless_http=True,
+            json_response=True,
+            host="0.0.0.0",
+            max_request_body_size=64 * 1024 * 1024,
+        )
         routes: list[Any] = []
         if self._router is not None:
             routes.append(
@@ -410,7 +422,13 @@ class KnowledgeService:
                 )
             )
         routes.append(Mount("/", app=mcp_app))
-        return Starlette(routes=routes, lifespan=mcp_app.lifespan)
+
+        @contextlib.asynccontextmanager
+        async def lifespan(app: Starlette):
+            async with self.mcp.session_manager.run():
+                yield
+
+        return Starlette(routes=routes, lifespan=lifespan)
 
     def run(self, host: str = "0.0.0.0") -> None:
         """Launch the service via uvicorn (blocking)."""
