@@ -1,0 +1,9 @@
+# ChromaDB persistent storage — data, not code
+knowledge/knowledge/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Local .env (per-container overrides)
+service/.env
