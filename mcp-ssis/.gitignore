@@ -1,0 +1,4 @@
+# Runtime artefacts written by the MCP service — per-iteration dtexec
+# stdout/stderr/metrics. Useful locally for debugging a failed run; not
+# worth committing.
+packages/logs/
