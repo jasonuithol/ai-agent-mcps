@@ -291,7 +291,7 @@ Based on `python:3.12-slim-bookworm` (same as mcp-build). Installs:
 ### Volumes
 
 ```
--v "$HOME/Projects/mcp-valheim/knowledge/knowledge:/opt/knowledge"
+-v "$HOME/Projects/ai-agent-mcps/mcp-valheim/knowledge/knowledge:/opt/knowledge"
 -v "$HOME/Projects:/opt/projects:ro"
 ```
 
@@ -318,7 +318,7 @@ First-time setup after the service is running:
 
 1. Index the curated docs:
    ```
-   seed_docs("/opt/projects/mcp-valheim/docs")
+   seed_docs("/opt/projects/ai-agent-mcps/mcp-valheim/docs")
    ```
 
 2. Decompile and index the key classes:

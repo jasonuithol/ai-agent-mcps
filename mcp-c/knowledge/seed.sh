@@ -75,7 +75,7 @@ echo "  OK"
 echo ""
 echo "=== Seeding mcp-c docs ==="
 call_tool "$BASE" 2 "seed_docs" \
-    '{"docs_path":"/opt/projects/mcp-c/docs"}'
+    '{"docs_path":"/opt/projects/ai-agent-mcps/mcp-c/docs"}'
 
 # ---------------------------------------------------------------------------
 # Optional: seed any C project the user has cloned. Drop in your

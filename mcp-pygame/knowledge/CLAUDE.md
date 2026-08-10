@@ -147,7 +147,7 @@ First-time setup after `start-container.sh`:
 
 Which does:
 
-1. `seed_docs("/opt/projects/mcp-pygame/docs")`
+1. `seed_docs("/opt/projects/ai-agent-mcps/mcp-pygame/docs")`
 2. `seed_python_source("UltimatePyve", "/opt/projects/UltimatePyve")`
 
 After that, the knowledge base grows automatically from `run_tests` and

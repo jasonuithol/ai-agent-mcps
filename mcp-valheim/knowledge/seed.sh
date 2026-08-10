@@ -82,7 +82,7 @@ echo "  OK"
 
 echo ""
 echo "=== Seeding docs ==="
-call_tool "$BASE" 2 "seed_docs" '{"docs_path":"/opt/projects/mcp-valheim/docs"}'
+call_tool "$BASE" 2 "seed_docs" '{"docs_path":"/opt/projects/ai-agent-mcps/mcp-valheim/docs"}'
 
 # ---------------------------------------------------------------------------
 # Decompile full DLL and seed

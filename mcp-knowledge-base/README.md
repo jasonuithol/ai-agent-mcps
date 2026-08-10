@@ -54,7 +54,7 @@ pip install "mcp-knowledge-base @ git+https://github.com/jasonuithol/mcp-knowled
 For local dev, editable install from a sibling clone:
 
 ```bash
-pip install -e ~/Projects/mcp-knowledge-base
+pip install -e ~/Projects/ai-agent-mcps/mcp-knowledge-base
 ```
 
 ## Minimal example

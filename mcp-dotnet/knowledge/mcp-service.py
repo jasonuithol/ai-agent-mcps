@@ -81,7 +81,7 @@ def seed_docs(docs_path: str) -> str:
 
     Args:
         docs_path: Absolute path (as seen from inside this container) to a
-                   directory of markdown docs, e.g. '/opt/projects/mcp-dotnet/docs'.
+                   directory of markdown docs, e.g. '/opt/projects/ai-agent-mcps/mcp-dotnet/docs'.
     """
     root = Path(docs_path)
     if not root.is_dir():

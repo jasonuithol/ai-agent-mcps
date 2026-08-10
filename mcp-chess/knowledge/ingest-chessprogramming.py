@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Cache chessprogramming.org wiki pages as markdown under
-~/Projects/mcp-chess/docs/chessprogramming/.
+~/Projects/ai-agent-mcps/mcp-chess/docs/chessprogramming/.
 
 MediaWiki API workflow:
   1. ?action=query&list=allpages&apnamespace=0  — enumerate content pages
@@ -101,7 +101,7 @@ def html_to_markdown(html):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--out", type=Path, default=Path.home() / "Projects/mcp-chess/docs/chessprogramming")
+    ap.add_argument("--out", type=Path, default=Path.home() / "Projects/ai-agent-mcps/mcp-chess/docs/chessprogramming")
     ap.add_argument("--limit", type=int, help="Stop after N fetches (smoke test)")
     ap.add_argument("--refresh", action="store_true", help="Re-fetch cached pages")
     args = ap.parse_args()

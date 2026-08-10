@@ -90,13 +90,13 @@ if [ -d "$REPO_DIR/docs" ]; then
     echo ""
     echo "=== Seeding mcp-chess docs root (topic=mcp-chess, catch-all) ==="
     call_tool "$BASE" 2 "seed_docs" \
-        "{\"docs_path\":\"/opt/projects/mcp-chess/docs\",\"topic\":\"mcp-chess\"}"
+        "{\"docs_path\":\"/opt/projects/ai-agent-mcps/mcp-chess/docs\",\"topic\":\"mcp-chess\"}"
 
     if [ -d "$REPO_DIR/docs/chessprogramming" ]; then
         echo ""
         echo "=== Seeding chessprogramming.org cache (topic=chessprogramming) ==="
         call_tool "$BASE" 3 "seed_docs" \
-            "{\"docs_path\":\"/opt/projects/mcp-chess/docs/chessprogramming\",\"topic\":\"chessprogramming\"}"
+            "{\"docs_path\":\"/opt/projects/ai-agent-mcps/mcp-chess/docs/chessprogramming\",\"topic\":\"chessprogramming\"}"
     fi
 else
     echo ""

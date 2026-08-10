@@ -75,7 +75,7 @@ echo "  OK"
 echo ""
 echo "=== Seeding mcp-pygame docs ==="
 call_tool "$BASE" 2 "seed_docs" \
-    '{"docs_path":"/opt/projects/mcp-pygame/docs"}'
+    '{"docs_path":"/opt/projects/ai-agent-mcps/mcp-pygame/docs"}'
 
 # ---------------------------------------------------------------------------
 # Seed UltimatePyve source

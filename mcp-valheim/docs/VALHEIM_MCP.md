@@ -215,7 +215,7 @@ After starting mcp-knowledge for the first time, seed with the curated docs
 and key Valheim classes:
 
 ```
-seed_docs("/opt/projects/mcp-valheim/docs")
+seed_docs("/opt/projects/ai-agent-mcps/mcp-valheim/docs")
 seed_decompile("Player")
 seed_decompile("ZRoutedRpc")
 seed_decompile("ZDOVars")
