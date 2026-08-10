@@ -1,0 +1,64 @@
+# Peter van Diepen
+
+Source: https://www.chessprogramming.org/Peter_van_Diepen
+
+**[Home](/Main_Page "Main Page") \* [People](/People "People") \* Peter van Diepen**
+
+[![](/images/thumb/b/bc/PetervanDiepen.jpg/320px-PetervanDiepen.jpg)](https://www.linkedin.com/in/pvdiepen)
+
+Peter van Diepen [[1]](#cite_note-1)
+
+**Peter van Diepen**,  
+a Dutch computer scientist, [docent](https://en.wikipedia.org/wiki/Docent) of mathematics and [informatics](https://en.wikipedia.org/wiki/Informatics) at [Luzac College](https://nl.wikipedia.org/wiki/Luzac_College), chess player and as early computer chess programmer.
+He is author of the program [IGM](/IGM "IGM") (I'm Going to be Mated), which competed the [Dutch Open Computer Chess Championship](/Dutch_Open_Computer_Chess_Championship "Dutch Open Computer Chess Championship") in [1981](/DOCCC_1981 "DOCCC 1981") and [1983](/DOCCC_1983 "DOCCC 1983"), and already the unofficial Dutch championship matches in 1979 and 1980 [[2]](#cite_note-2) [[3]](#cite_note-3) .
+
+# Quotes
+
+## Dap Hartmann
+
+[Dap Hartmann](/Dap_Hartmann "Dap Hartmann") in 1987 on *[Schaken voor Computers](/Peter_van_Diepen#SchakenvoorComputers "Peter van Diepen")* [[4]](#cite_note-4):
+
+```
+The 275-page book contains 97 diagrams, 49 figures, 43 complete games, and 32 photos. It is, in every aspect, the best book on computer chess so far. Not only does it contain a good course in programming a computer to play chess, it is also very valuable as a reference guide for most of the algorithms used. Advanced readers will be delighted to find clear description of transposition tables and database construction.
+```
+
+```
+Both Van Diepen and Van den Herik are editor-in chief of a major journal, and this is reflected in a crisp style and clear explanation. If ever a book required translation, it is this. In the meantime, those who have command of the Dutch language are singularly privileged.
+```
+
+## Jaap van den Herik
+
+[Jaap van den Herik](/Jaap_van_den_Herik "Jaap van den Herik") in 2010 [[5]](#cite_note-5) :
+
+```
+Along with Barend Swets and Peter van Diepen, I was one of the followers of Euwe and De Groot. Euwe had become extraordinary professor in 1964 Rotterdam and professor in Tilburg (data processing)...
+```
+
+# Publications
+
+[[6]](#cite_note-6)
+
+- Peter van Diepen (ed.) (**1982**). *Toernooibulletin van het Nederlands kampioenschap computerschaak 1981*. [pdf](http://www.schaakcomputers.nl/hein_veldhuis/database/files/03-1982,%20toernooibulletin%20van%20het%20Nederlands%20kampioenschap%20computerschaak%201981.pdf) hosted by [Hein Veldhuis](/Hein_Veldhuis "Hein Veldhuis") » [DOCCC 1981](/DOCCC_1981 "DOCCC 1981")
+- Peter van Diepen (ed.) (**1983**). *Toernooibulletin van het Nederlands kampioenschap computerschaak 1982*. [pdf](http://www.schaakcomputers.nl/hein_veldhuis/database/files/05-1983,%20toernooibulletin%20van%20het%20Nederlands%20kampioenschap%20computerschaak%201982.pdf) hosted by [Hein Veldhuis](/Hein_Veldhuis "Hein Veldhuis") » [DOCCC 1982](/DOCCC_1982 "DOCCC 1982")
+- Peter van Diepen, [Jaap van den Herik](/Jaap_van_den_Herik "Jaap van den Herik") (**1987**). *Schaken voor Computers*. (Dutch), [Broekhuis](http://www.boekhandelbroekhuis.nl/nl/boek/?authortitle=diepen/schaken-voor-computers-9789062332717&utm_source=boekwinkeltjes&utm_medium=paid-media&utm_campaign=boekwinkeltjes), [amazon](http://www.amazon.com/Schaken-Voor-Computers-Peter-Diepen/dp/9062332714/ref=sr_1_2?ie=UTF8&s=books&qid=1270456416&sr=1-2)
+
+:   [![SchaakenvoorComputers.jpg](/images/0/0f/SchaakenvoorComputers.jpg)](http://www.boekhandelbroekhuis.nl/nl/boek/?authortitle=diepen/schaken-voor-computers-9789062332717&utm_source=boekwinkeltjes&utm_medium=paid-media&utm_campaign=boekwinkeltjes)
+
+- [Nico Kuijf](/index.php?title=Nico_Kuijf&action=edit&redlink=1 "Nico Kuijf (page does not exist)"), Peter van Diepen (**1991**). *Chess Database instead of Chess Literature*. [Advances in Computer Chess 6](/Advances_in_Computer_Chess_6 "Advances in Computer Chess 6")
+- Peter van Diepen (**1991**). *Report on the CSVN 11th Dutch Computer Chess Championship*. [ICCA Journal, Vol. 14, No. 4](/ICGA_Journal#14_4 "ICGA Journal") » [DOCCC 1991](/DOCCC_1991 "DOCCC 1991")
+- Peter van Diepen (**1993**). *Report on the 13th Dutch Computer-Chess Championship*. [ICCA Journal, Vol. 16, No. 4](/ICGA_Journal#16_4 "ICGA Journal") » [DOCCC 1993](/DOCCC_1993 "DOCCC 1993")
+
+# External Links
+
+- [Peter van Diepen | LinkedIn](https://www.linkedin.com/in/pvdiepen)
+
+# References
+
+1. [↑](#cite_ref-1) [Peter van Diepen | LinkedIn](https://www.linkedin.com/in/pvdiepen)
+2. [↑](#cite_ref-2) [Dutch Computer Chess Championships - Complete History of Rankings and Games](http://old.csvn.nl/dcc_hist.html) by [Theo van der Storm](/Theo_van_der_Storm "Theo van der Storm")
+3. [↑](#cite_ref-3) [Prehistorie van het Nederlandse Computerschaak](http://old.csvn.nl/pre_hist.html) (Dutch)
+4. [↑](#cite_ref-4) [Dap Hartmann](/Dap_Hartmann "Dap Hartmann") (**1987**). Peter van Diepen and [Jaap van den Herik](/Jaap_van_den_Herik "Jaap van den Herik"): *Schaken voor Computers*. (Review), [ICCA Journal, Vol. 10, No. 3](/ICGA_Journal#10_3 "ICGA Journal")
+5. [↑](#cite_ref-5) [Max Euwe Centrum - Nieuwsbrief nummer 74](http://www.maxeuwe.nl/nieuwsbrief/nummer74.pdf) (pdf) (Dutch)
+6. [↑](#cite_ref-6) [ICGA Reference Database](/ICGA_Journal#RefDB "ICGA Journal")
+
+**[Up one level](/People "People")**

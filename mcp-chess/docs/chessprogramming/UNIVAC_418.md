@@ -1,0 +1,39 @@
+# UNIVAC 418
+
+Source: https://www.chessprogramming.org/UNIVAC_418
+
+**[Home](/Main_Page "Main Page") \* [Hardware](/Hardware "Hardware") \* UNIVAC 418**
+
+[![](/images/thumb/0/0c/Univac-418.jpg/300px-Univac-418.jpg)](https://zerogees.wordpress.com/2015/12/06/univac-418-paddington/univac-418/)
+
+UNIVAC 418 [[1]](#cite_note-1)
+
+**UNIVAC 418**,   
+a [transistorized](https://en.wikipedia.org/wiki/Transistor_computer), [18-bit](https://en.wikipedia.org/wiki/18-bit) mainframe computer system by [Sperry UNIVAC](https://en.wikipedia.org/wiki/UNIVAC), first delivered as UNIVAC **418-I** in June 1963, available with 4 to 16 KiWords of [core memory](/Memory#Core "Memory") with 4 μs cycle time, also available as [militarized version](https://en.wikipedia.org/wiki/Military_computers) UNIVAC **1218**. The **418-II** in November 1964 with up to 64 KiWords cut the cycle time to 2 μs and the **418-III** came in 1969 with up to 128 KiWords further reduced to 750 ns memory cycles [[2]](#cite_note-2). The 418 used [ones' complement](https://en.wikipedia.org/wiki/Ones%27_complement) integer arithmetic with single or double precision (36-bit) operands. The 36-bit [accumulator](https://en.wikipedia.org/wiki/Accumulator_(computing)) (A) was therefor divided by two upper and lower 18-bit AU and AL registers. A 3-bit index control register (ICR) controls the storing and loading of one [flip-flop](/Memory#FlipFlop "Memory") type B-register to and from eight main memory locations reserved as [index registers](https://en.wikipedia.org/wiki/Index_register) (IR). Further, a 6-bit special register is a memory base register for some instructions, completed by the 17-bit instruction address register (IAR). All registers were displayed as [binaries](https://en.wikipedia.org/wiki/Binary_number) on the [front panel](https://en.wikipedia.org/wiki/Front_panel) in realtime with the ability to enter new values via buttons in a special mode. The UNIVAC **418-III** had optional 36-bit [floating-point](https://en.wikipedia.org/wiki/Floating_point) support (1:8:27) and optional binary/decimal conversion instructions [[3]](#cite_note-3).
+
+# Chess Programs
+
+- [IGM](/IGM "IGM")
+- [Schach](/Schach_(US) "Schach (US)")
+
+# See also
+
+- [UNIVAC 494](/UNIVAC_494 "UNIVAC 494")
+- [UNIVAC 1100](/UNIVAC_1100 "UNIVAC 1100")
+
+# Manuals
+
+- [UNIVAC 418-III System Description 1969](http://bitsavers.trailing-edge.com/pdf/univac/418/UP-7576_418-IIIsys_1969.pdf) (pdf)
+- [UNIVAC 418-III RTOS Assembler](http://bitsavers.trailing-edge.com/pdf/univac/418/UP-7599r1_rtosAssemb_Jul70.pdf) (pdf)
+
+# External Links
+
+- [UNIVAC 418 from Wikipedia](https://en.wikipedia.org/wiki/UNIVAC_418)
+
+# References
+
+1. [↑](#cite_ref-1) UNIVAC 418 at [OTC](https://en.wikipedia.org/wiki/Overseas_Telecommunications_Commission), [Paddington, New South Wales](https://en.wikipedia.org/wiki/Paddington,_New_South_Wales), Image from [Univac 418 – Paddington | Ex-OTC](https://zerogees.wordpress.com/2015/12/06/univac-418-paddington/) by Robert Brand, December 6, 2015
+2. [↑](#cite_ref-2) [UNIVAC 418 from Wikipedia](https://en.wikipedia.org/wiki/UNIVAC_418)
+3. [↑](#cite_ref-3) [UNIVAC 418-III System Description 1969](http://bitsavers.trailing-edge.com/pdf/univac/418/UP-7576_418-IIIsys_1969.pdf) (pdf hosted by [bitsavers.org](http://bitsavers.informatik.uni-stuttgart.de/))
+
+**[Up one Level](/Hardware "Hardware")**

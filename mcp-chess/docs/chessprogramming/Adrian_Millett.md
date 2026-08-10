@@ -1,0 +1,47 @@
+# Adrian Millett
+
+Source: https://www.chessprogramming.org/Adrian_Millett
+
+**[Home](/Main_Page "Main Page") \* [People](/People "People") \* Adrian Millett**
+
+**Adrian Millett**, (often misspelled as Adrian Millet)  
+a British [Checkers](/Checkers "Checkers") and games programmer. He is author of the [Checkers](/Checkers "Checkers") playing program [Sage](https://www.game-ai-forum.org/icga-tournaments/program.php?id=340)
+[[1]](#cite_note-1) [[2]](#cite_note-2) [[3]](#cite_note-3)
+and the [Draughts](/Draughts "Draughts") and Draughts variant playing program [Dynamo](https://www.game-ai-forum.org/icga-tournaments/program.php?id=279) [[4]](#cite_note-4),
+and along with [Derek Oldbury](/Derek_Oldbury "Derek Oldbury") co-author of the Checkers playing program [Checkermate](https://www.game-ai-forum.org/icga-tournaments/program.php?id=390). Sage Draughts competed at the [1st Computer Olympiad, London 1989](/1st_Computer_Olympiad#Checkers "1st Computer Olympiad"),
+Checkermate at the [2nd Computer Olympiad, London 1990](/2nd_Computer_Olympiad#Checkers "2nd Computer Olympiad"), both in [8x8 Checkers](/Checkers "Checkers") - Dynamo played 10x10 [Draughts](/Draughts "Draughts") at the [4th Computer Olympiad, London 1992](/4th_Computer_Olympiad#Draughts "4th Computer Olympiad").
+In 1995, Adrian Millett introduced the [Portable Draughts Notation](https://en.wikipedia.org/wiki/Portable_Draughts_Notation) based on the [Portable Game Notation](/Portable_Game_Notation "Portable Game Notation") in Chess [[5]](#cite_note-5).
+
+# Genius GUI
+
+Adrian Millett is developer of the [Windows](/Windows "Windows") [GUI](/GUI "GUI") for [Chess Genius 4](/Chess_Genius "Chess Genius") [[6]](#cite_note-6)
+[[7]](#cite_note-7), which evolved to a multi-engine GUI via *Chess Genius 6 (6.5)* to the [Millennium Chess System](/Millennium_Chess_System "Millennium Chess System") [[8]](#cite_note-8), and the *Chess Genius Classic* GUI [[9]](#cite_note-9).
+
+# Forum Posts
+
+- [cg](https://groups.google.com/d/msg/rec.games.chess/Lm5NFuW-xGc/7qFhcsXnEHgJ) by Pc Solutions, [rgc](/Computer_Chess_Forums "Computer Chess Forums"), December 29, 1994 » [Chess Genius](/Chess_Genius "Chess Genius")
+- [endgame databases and misc](https://groups.google.com/d/msg/rec.games.chess/W2Q_ncUe4ic/IryZG3M2uq4J) by Pc Solutions, [rgc](/Computer_Chess_Forums "Computer Chess Forums"), April 22, 1995
+- [PDN - Portable Draughts Notation](https://groups.google.com/d/msg/rec.games.chess/_bc_FD4tSFI/nZq6ifCR58cJ) by Pc Sol, [rgc](/Computer_Chess_Forums "Computer Chess Forums"), July 22, 1995
+- [hash mem in win-chess progs](https://groups.google.com/d/msg/rec.games.chess.computer/Taxgk4l-S90/ggkiWEVavYsJ) by Pc Sol, [rgcc](/Computer_Chess_Forums "Computer Chess Forums"), September 28, 1995 » [Transposition Table](/Transposition_Table "Transposition Table"), [Windows](/Windows "Windows")
+- [Re: mclane's christmas-tournament: #6](https://groups.google.com/d/msg/rec.games.chess.computer/unxpiF7o664/0kfkh6k75scJ) by Pc Solutions, [rgcc](/Computer_Chess_Forums "Computer Chess Forums"), January 07, 1999 » [Millennium Chess System](/Millennium_Chess_System "Millennium Chess System")
+- [news: SAGE 5000..](https://groups.google.com/d/msg/rec.games.chess.computer/txlECoRty3I/zqCKUAmfEIoJ) by Pc Solutions, [rgcc](/Computer_Chess_Forums "Computer Chess Forums"), May 12, 1999
+- [Re: Deep Junior vs Genius6.5/Shredder4](https://groups.google.com/d/msg/rec.games.chess.computer/v_PISAiOR3A/E2T3aibd0P0J) by Pc Solutions, [rgcc](/Computer_Chess_Forums "Computer Chess Forums"), April 11, 2000 » [Millennium Chess System](/Millennium_Chess_System "Millennium Chess System")
+
+# External Links
+
+- [Adrian Millet's ICGA Tournaments](https://www.game-ai-forum.org/icga-tournaments/person.php?id=269)
+- [ChessAndCheckers.com!](http://pcsol-sage.tripod.com/pages/pcsol.htm)
+
+# References
+
+1. [↑](#cite_ref-1) [Sage 4000](https://mdgsoft.home.xs4all.nl/draughts/sage4000.html)
+2. [↑](#cite_ref-2) [SAGE 4001 Checkers Program](https://mdgsoft.home.xs4all.nl/draughts/sage4001.html)
+3. [↑](#cite_ref-3) [Sage Draughts 9.0](http://pcsol-sage.tripod.com/pages/sage.htm)
+4. [↑](#cite_ref-4) [Dynamo Draughts](http://pcsol-sage.tripod.com/pages/dynamo.htm)
+5. [↑](#cite_ref-5) [PDN - Portable Draughts Notation](https://groups.google.com/d/msg/rec.games.chess/_bc_FD4tSFI/nZq6ifCR58cJ) by Pc Sol, [rgc](/Computer_Chess_Forums "Computer Chess Forums"), July 22, 1995
+6. [↑](#cite_ref-6) [cg](https://groups.google.com/d/msg/rec.games.chess/Lm5NFuW-xGc/7qFhcsXnEHgJ) by Pc Solutions, [rgc](/Computer_Chess_Forums "Computer Chess Forums"), December 29, 1994
+7. [↑](#cite_ref-7) [Richard Lang](/Richard_Lang "Richard Lang") (**1995**). *Chess Genius 4*. [Computer Chess Reports](/Computer_Chess_Reports "Computer Chess Reports"), Vol. 5, Nos. 3+4, pp. 80
+8. [↑](#cite_ref-8) [Schachclub Leinzell - Schach + PC - Shredder 5, Teil 1](http://scleinzell.schachvereine.de/p_spielprogramme/shredder5.shtml) by [Peter Schreiner](/Peter_Schreiner "Peter Schreiner") (German)
+9. [↑](#cite_ref-9) [ChessGenius Classic 7.0 - The Chess Program that beat Kasparov!](http://pcsol-sage.tripod.com/pages/chess.htm)
+
+**[Up one level](/People "People")**

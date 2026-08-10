@@ -1,0 +1,41 @@
+# Peter Schreiner
+
+Source: https://www.chessprogramming.org/Peter_Schreiner
+
+**[Home](/Main_Page "Main Page") \* [People](/People "People") \* Peter Schreiner**
+
+[![](/images/4/44/PeterSchreiner01.jpg)](http://scleinzell.schachvereine.de/home/pitters.shtml)
+
+Peter Schreiner [[1]](#cite_note-1)
+
+**Peter Schreiner**,  
+a German computer chess expert, tester, writer and journalist, and one of the [founders](/CCC#Founders "CCC") of [CCC](/CCC "CCC"). Peter, also known as Pitters, did computer chess customer support for [Martin Stamer's](/Martin_Stamer "Martin Stamer") *EuroChess Zentrale*, which distributed [Marty Hirsch's](/Marty_Hirsch "Marty Hirsch") [MChess Pro](/MChess "MChess") in the 90s. Peter represented and operated MChess Pro when it become [World Microcomputer Champion](/World_Microcomputer_Chess_Championship "World Microcomputer Chess Championship") at the [13th World Microcomputer Chess Championship](/WMCCC_1995 "WMCCC 1995") 1995 Paderborn.
+After Marty Hirsch's problems [[2]](#cite_note-2)
+[[3]](#cite_note-3) with his former distributor, Peter Schreiner continued to support MChess and worked for Marty's new European dealer [Ossi Weiner](/Ossi_Weiner "Ossi Weiner").
+He operated MChess during the [15th World Microcomputer Chess Championship](/WMCCC_1997 "WMCCC 1997") 1997 Paris and the [9th World Computer Chess Championship](/WCCC_1999 "WCCC 1999") 1999 Paperborn. Further, Peter Schreiner did customer support for [ChessBase](/ChessBase "ChessBase") products and wrote support articles and chess software reviews also published online via chessclub [Leinzell](https://en.wikipedia.org/wiki/Leinzell) .
+
+# Photos
+
+[![WMCCC1995Winners.jpg](/images/2/26/WMCCC1995Winners.jpg)](/File:WMCCC1995Winners.jpg)
+
+A Tropism towards Trophies, [WMCCC 1995](/WMCCC_1995 "WMCCC 1995"). The professional trophy awarded to [Chess Genius](/Chess_Genius "Chess Genius") by [Richard Lang](/Richard_Lang "Richard Lang"),   
+the absolute World Champion, [MChess Pro 5.0](/MChess "MChess") represented by Peter Schreiner [[4]](#cite_note-4)
+
+# Forum Posts
+
+- [MChess 7.0](https://www.stmintz.com/ccc/index.php?id=13336) by Peter Schreiner, [CCC](/CCC "CCC"), December 26, 1997
+
+# External Links
+
+- [Schachclub Leinzell Informationen zu aktueller Schachsoftware](http://scleinzell.schachvereine.de/home/pitters.shtml) by Peter Schreiner (German)
+- [Who is Who at ChessBase](http://de.chessbase.com/portals/3/files/2004/ausflug/gruppemitnamen.jpg) from [ChessBase auf Helgoland](http://de.chessbase.com/home/TabId/176/PostId/303269) June 16, 2004
+- [Interview mit Hans-Walter Schmitt](http://de.chessbase.com/post/-schach-braucht-leute-mit-visionen-) by Peter Schreiner, [ChessBase News](/ChessBase "ChessBase"), April 09, 2008 (German)
+
+# References
+
+1. [↑](#cite_ref-1) [Schachclub Leinzell Informationen zu aktueller Schachsoftware](http://scleinzell.schachvereine.de/home/pitters.shtml) by Peter Schreiner (German)
+2. [↑](#cite_ref-2) [Re: KK's Gold Metal list](https://groups.google.com/d/msg/rec.games.chess.computer/VkDSuYr15fo/yJlAa234Fj8J) by [Marty Hirsch](/Marty_Hirsch "Marty Hirsch"), [rgcc](/Computer_Chess_Forums "Computer Chess Forums"), February 24, 1997
+3. [↑](#cite_ref-3) [Marty Hirsch](https://groups.google.com/d/msg/rec.games.chess.computer/CE8lF2uw1YY/7tWxUgLgFBoJ) by [Andreas Mader](/Andreas_Mader "Andreas Mader"), [rgcc](/Computer_Chess_Forums "Computer Chess Forums"), June 6, 1997
+4. [↑](#cite_ref-4) Photo by [Rainer Feldmann](/Rainer_Feldmann "Rainer Feldmann"),. [ICCA Journal, Vol. 18, No. 4](/ICGA_Journal#18_4 "ICGA Journal"), pp. 231
+
+**[Up one level](/People "People")**

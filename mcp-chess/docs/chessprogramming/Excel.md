@@ -1,0 +1,86 @@
+# Excel
+
+Source: https://www.chessprogramming.org/Excel
+
+**[Home](/Main_Page "Main Page") \* [Engines](/Engines "Engines") \* Excel**
+
+[![](/images/1/19/Excel68000.jpg)](https://www.flickr.com/photos/10261668@N05/859027346/in/set-72157600922170604)
+
+Excel 68000 [[1]](#cite_note-1)
+
+**Excel**, (Fidelity Excel, 68000 Mach I, 68000 Mach II, 68000 Mach III, 68020 Mach IV)  
+a family of the [dedicated](/Dedicated_Chess_Computers "Dedicated Chess Computers") [Chess Challenger](/Chess_Challenger "Chess Challenger") series by [Fidelity Electronics](/Fidelity_Electronics "Fidelity Electronics"), produced and distributed from 1987 to 1989.
+The Excel had a 16-bit [Sargon III](/Sargon "Sargon") based [68000](/68000 "68000") program by [Dan](/Dan_Spracklen "Dan Spracklen") and [Kathe Spracklen](/Kathe_Spracklen "Kathe Spracklen"),
+and was the first dedicated unit featuring a [transposition table](/Transposition_Table "Transposition Table") apparently with [BCH hashing](/BCH_Hashing "BCH Hashing") of < 16 KiB, 128 KiB for the **Mach II**, 64 KiB for the **Mach III**, 512 KiB for the [68020](/68020 "68020") **Mach IV**. Due to TTs, the Excel could solve the [Lasker-Reichhelm Position](/Lasker-Reichhelm_Position "Lasker-Reichhelm Position") in under a minute, but had some issues with [color flipped](/Color_Flipping "Color Flipping") positions, f. i. in [KBNK](/KBNK_Endgame "KBNK Endgame") [[2]](#cite_note-2).
+The Mach III and its successor, the [68020](/68020 "68020") 32-bit Mach IV were also shipped in other housings, such as the [Elite Avant Garde V2](/Elite "Elite") [[3]](#cite_note-3) and Avant Garde V6 [[4]](#cite_note-4), and the later Fidelity **Designer** models [[5]](#cite_note-5) [[6]](#cite_note-6).
+
+# Master Rating
+
+[![](/images/1/11/Mach3master.jpg)](/Ttps://www.flickr.com/photos/10261668@N05/859084808/in/album-72157600922170604/ "Ttps://www.flickr.com/photos/10261668@N05/859084808/in/album-72157600922170604/")
+
+Mach III Rating Certificate [[7]](#cite_note-7)
+
+The 68000 Mach III was rated 2265 by the [United States Chess Federation`s](https://en.wikipedia.org/wiki/United_States_Chess_Federation) Computer Rating Agency, an independent certifying body. The computer obtained that [Master rating](https://en.wikipedia.org/wiki/Chess_title#Master) by competing 48 tournament games against rated players [[8]](#cite_note-8).
+The German Schach-computer Info Wiki mentions an (old) [SSDF](/SSDF "SSDF") rating of 1993 [[9]](#cite_note-9) [[10]](#cite_note-10).
+
+# See also
+
+- [Elite](/Elite "Elite")
+- [Excellence](/Excellence "Excellence")
+- [Excelsior](/Excelsior "Excelsior")
+- [Fidelity](/Fidelity "Fidelity")
+- [Fidelity Electronics](/Fidelity_Electronics "Fidelity Electronics")
+- [Par Excellence](/Par_Excellence "Par Excellence")
+
+# Selected Publications
+
+- [Thorsten Czub](/Thorsten_Czub "Thorsten Czub") (**1989**). *[Er weiß, was er weiß - Der Mach III Master glänzt mit Wissen und Geschwindigkeit](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_Mach_III#Er_wei.C3.9F.2C_was_er_wei.C3.9F)*. [Computerschach und Spiele](/Computerschach_und_Spiele "Computerschach und Spiele"), Heft 2 ,April-Mai 1989, hosted by [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+- [Shawn Benn](/Shawn_Benn "Shawn Benn"), [Danny Kopec](/Danny_Kopec "Danny Kopec") (**1993**). *The Bratko-Kopec Test Recalibrated.* [ICCA Journal, Vol. 16, No. 3](/ICGA_Journal#16_3 "ICGA Journal") » [Bratko-Kopec Test](/Bratko-Kopec_Test "Bratko-Kopec Test")
+
+# Forum Posts
+
+- [Zarkov vs. Mach III (10 games)](https://groups.google.com/d/msg/rec.games.chess/_5_aeOAu_tU/L-xvltCmClUJ) by [Stuart Cracraft](/Stuart_Cracraft "Stuart Cracraft"), [rgc](/Computer_Chess_Forums "Computer Chess Forums"), November 05, 1989 » [Zarkov](/Zarkov "Zarkov")
+- [Fidelity Excel models](https://www.stmintz.com/ccc/index.php?id=365718) by [Alain Zanchetta](/index.php?title=Alain_Zanchetta&action=edit&redlink=1 "Alain Zanchetta (page does not exist)"), [CCC](/CCC "CCC"), May 18, 2004
+- [Fidelity Excel Mach III design](https://www.stmintz.com/ccc/index.php?id=371874) by [Alain Zanchetta](/index.php?title=Alain_Zanchetta&action=edit&redlink=1 "Alain Zanchetta (page does not exist)"), [CCC](/CCC "CCC"), June 22, 2004
+- [Inside Fidelity Excel Mach III](https://www.stmintz.com/ccc/index.php?id=386327) by [Alain Zanchetta](/index.php?title=Alain_Zanchetta&action=edit&redlink=1 "Alain Zanchetta (page does not exist)"), [CCC](/CCC "CCC"), September 06, 2004
+- [Excel 68000 question](https://www.stmintz.com/ccc/index.php?id=410027) by Matthew Hull, [CCC](/CCC "CCC"), February 07, 2005
+- [Rare Fidelity Excel Mach II on ebay](http://www.hiarcs.net/forums/viewtopic.php?t=1696) by Larry, [Hiarcs Forum](/Computer_Chess_Forums "Computer Chess Forums"), September 09, 2008
+- [Difference between Fidelity Excel Mach3 versions...](http://www.hiarcs.net/forums/viewtopic.php?t=2455) by Larry, [Hiarcs Forum](/Computer_Chess_Forums "Computer Chess Forums"), June 24, 2009
+- [The Fidelity Excel Mach II & The 1987 World Open](http://www.hiarcs.net/forums/viewtopic.php?t=6598) by Cyberchess, [Hiarcs Forum](/Computer_Chess_Forums "Computer Chess Forums"), February 17, 2014
+
+# External Links
+
+## Chess Computer
+
+- [Excel 68000 (Fidelity)](http://electronicchess.free.fr/heroes.html#excel68000) from [Electronicchess](http://electronicchess.free.fr/index-UK.html)
+- [Excel Mach III (Fidelity)](http://electronicchess.free.fr/heroes.html#excelmach3) from [Electronicchess](http://electronicchess.free.fr/index-UK.html)
+- [Fidelity Excel 68000](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_68000) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+- [Fidelity Excel 68000 Mach II](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_68000_Mach_II) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+- [Fidelity Excel Mach III](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_Mach_III) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+- [Fidelity Excel Mach IV](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_Mach_IV) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+- [Oldie-Artikel 1](http://thorstenczub.de/oldie1.html) by [Thorsten Czub](/Thorsten_Czub "Thorsten Czub") (German)
+
+## Misc
+
+- [Excel (disambiguation) from Wikipedia](https://en.wikipedia.org/wiki/Excel)
+
+:   [Microsoft Excel from Wikipedia](https://en.wikipedia.org/wiki/Microsoft_Excel)
+
+- [Excellent (disambiguation) from Wikipedia](https://en.wikipedia.org/wiki/Excellent)
+- [Excelsior (disambiguation) from Wikipedia](https://en.wikipedia.org/wiki/Excelsior)
+- [Mach (disambiguation) from Wikipedia](https://en.wikipedia.org/wiki/Mach)
+
+# References
+
+1. [↑](#cite_ref-1) [Flickr - Fotosharing - 2. Fidelity](https://www.flickr.com/photos/10261668@N05/albums/72157600922170604/page2) by [Chewbanta](/Steve_Blincoe "Steve Blincoe")
+2. [↑](#cite_ref-2) [Fidelity Excel 68000](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_68000) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+3. [↑](#cite_ref-3) [Fidelity Elite V2](https://www.schach-computer.info/wiki/index.php/Fidelity_Elite_V2) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+4. [↑](#cite_ref-4) [Fidelity Elite V6](https://www.schach-computer.info/wiki/index.php/Fidelity_Elite_V6) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+5. [↑](#cite_ref-5) [Fidelity Designer 2265 Master](https://www.schach-computer.info/wiki/index.php/Fidelity_Designer_2265_Master) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+6. [↑](#cite_ref-6) [Fidelity Designer 2325 Master](https://www.schach-computer.info/wiki/index.php/Fidelity_Designer_2325_Master) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+7. [↑](#cite_ref-7) [Flickr - Fotosharing - 2. Fidelity](https://www.flickr.com/photos/10261668@N05/albums/72157600922170604/page2) by [Chewbanta](/Steve_Blincoe "Steve Blincoe")
+8. [↑](#cite_ref-8) [Thorsten Czub](/Thorsten_Czub "Thorsten Czub") (**1989**). *[Er weiß, was er weiß - Der Mach III Master glänzt mit Wissen und Geschwindigkeit](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_Mach_III#Er_wei.C3.9F.2C_was_er_wei.C3.9F)*. [Computerschach und Spiele](/Computerschach_und_Spiele "Computerschach und Spiele") Heft 2 April-Mai 1989, hosted by [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+9. [↑](#cite_ref-9) [Fidelity Excel Mach III](https://www.schach-computer.info/wiki/index.php/Fidelity_Excel_Mach_III) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En) (German)
+10. [↑](#cite_ref-10) [Wiki-Elo-Liste](https://www.schach-computer.info/wiki/index.php/Wiki-Elo-Liste_En) from [Schachcomputer.info Wiki](https://www.schach-computer.info/wiki/index.php/Hauptseite_En)
+
+**[Up one level](/Engines "Engines")**

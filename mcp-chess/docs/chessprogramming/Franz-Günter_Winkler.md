@@ -1,0 +1,57 @@
+# Franz-Günter Winkler
+
+Source: https://www.chessprogramming.org/Franz-Günter_Winkler
+
+**[Home](/Main_Page "Main Page") \* [People](/People "People") \* Franz-Günter Winkler**
+
+[![](/images/b/b4/Fgwinkler.jpg)](/File:Fgwinkler.jpg)
+
+Franz-Günter Winkler [[1]](#cite_note-1)
+
+**Franz-Günter Winkler**,  
+an Austrian physicist, computer scientist and [AI](/Artificial_Intelligence "Artificial Intelligence") researcher with interests in [cognitive science](/Cognition "Cognition") [[2]](#cite_note-2),
+interpretation of [Relativity theory](https://en.wikipedia.org/wiki/Theory_of_relativity) [[3]](#cite_note-3), [spacetime](https://en.wikipedia.org/wiki/Spacetime) [holism](https://en.wikipedia.org/wiki/Holism) [[4]](#cite_note-4),
+and [philosophy of time](https://en.wikipedia.org/wiki/Philosophy_of_space_and_time) [[5]](#cite_note-5) and [mind](https://en.wikipedia.org/wiki/Philosophy_of_mind) [[6]](#cite_note-6). He defended his Ph.D. thesis on spacetime holism at [Vienna University of Technology](/Vienna_University_of_Technology "Vienna University of Technology") in 2004 [[7]](#cite_note-7).
+
+# Selected Publications
+
+[[8]](#cite_note-8) [[9]](#cite_note-9)
+
+## 1997 ...
+
+- Franz-Günter Winkler, [Johannes Fürnkranz](/Johannes_F%C3%BCrnkranz "Johannes Fürnkranz") (**1997**). *[On Effort in AI Research: A Description Along Two Dimensions](https://www.aaai.org/Library/Workshops/1997/ws97-04-012.php)*. [Deep Blue versus Kasparov, AAAI Workshop](/Kasparov_versus_Deep_Blue_1997#AAAI_Workshop "Kasparov versus Deep Blue 1997")
+- Franz-Günter Winkler, [Johannes Fürnkranz](/Johannes_F%C3%BCrnkranz "Johannes Fürnkranz") (**1998**). *A Hypothesis on the Divergence of AI Research.* [ICCA Journal, Vol. 21, No. 1](/ICGA_Journal#21_1 "ICGA Journal"), [pdf](http://members.aon.at/fgwinkler/PAPER/AI_chess.pdf)
+- Franz-Günter Winkler (**1999**). *Space-Time Unity and the Representation Problem*. [CASYS'99](https://www.semanticscholar.org/paper/Computing-anticipatory-systems-%3A-CASYS%2799-third-%3A-Dubois/aa12ae53cdbd01cf988d91c7947879e63963e85f) [pdf](http://members.aon.at/fgwinkler/PAPER/Representation.pdf)
+
+## 2000 ...
+
+- Franz-Günter Winkler (**2002**). *An Outside View of Space and Time*. [Casys 2002](https://www.amazon.it/Computing-Anticipatory-Systems-International-Conference/dp/0735400814), [pdf](http://members.aon.at/fgwinkler/PAPER/Outside_View.pdf)
+- Franz-Günter Winkler (**2002**). *Spacetime Holism and the Passage of Time*. [The Nature of Time: Geometry, Physics and Perception (NATO ARW)](https://ui.adsabs.harvard.edu/abs/2003ntgp.conf.....B/abstract), [pdf](http://members.aon.at/fgwinkler/PAPER/Holism_Time.pdf)
+- Franz-Günter Winkler (**2002, 2005**). *The Normalization Problem of Special Relativity*. [Physics Essays](https://en.wikipedia.org/wiki/Physics_Essays), Vol. 15, No. 2, [arXiv:physics/0504214](https://arxiv.org/abs/physics/0504214)
+- Franz-Günter Winkler (**2004**). *[Spacetime Holism - A Fundamental Approach to the Representation Problem in Cognitive Science](http://repositum.tuwien.ac.at/obvutwhs/content/titleinfo/1562461?lang=en)*. Ph.D. thesis, [Vienna University of Technology](/Vienna_University_of_Technology "Vienna University of Technology"), [pdf](http://www.ub.tuwien.ac.at/diss/AC04222135.pdf)
+- Franz-Günter Winkler (**2005**). *[Die Spezielle Relativitätstheorie](https://www.hugendubel.de/de/buch/franz_guenter_winkler-die_spezielle_relativitaetstheorie-15918326-produkt-details.html)*. [Peter Lang](https://en.wikipedia.org/wiki/Peter_Lang_(publisher)) (German)
+- Franz-Günter Winkler (**2006**). *[Spacetime Holism and the Hard Problem of Consciousness](https://ui.adsabs.harvard.edu/abs/2006AIPC..839..465W/abstract)*. [CASYS'05](https://www.tib.eu/en/search/id/TIBKAT%3A519072669/), [pdf](https://pdfs.semanticscholar.org/6dd3/16ef0a4a1c3c0f2fec0feab48795cb558674.pdf)
+- Franz-Günter Winkler (**2007**). *Gravitation in 4D Euclidean Space-Time Geometry*. [arXiv:0710.2117](https://arxiv.org/abs/0710.2117)
+
+## 2010 ...
+
+- Franz-Günter Winkler (**2013, 2015**). *[Diagonal Metrics of Static, Spherically Symmetric Fields The Geodesic Equations and the Mass-Energy Relation from the Coordinate Perspective](https://link.springer.com/article/10.1007/s10773-013-1596-1)*. [International Journal of Theoretical Physics](https://en.wikipedia.org/wiki/International_Journal_of_Theoretical_Physics), Vol, 52, No. 9, [arXiv:1503.01970](https://arxiv.org/abs/1503.01970)
+- Franz-Günter Winkler (**2015**). *[Spacetime Holism - A Fundamental Approach to the Representation Problem in Cognitive Science](https://www.hugendubel.de/de/buch/franz_guenter_winkler-spacetime_holism-8288152-produkt-details.html?searchId=102029015&originalSearchString=)*. [Südwestdeutscher Verlag für Hochschulschriften AG Co. KG](https://en.wikipedia.org/wiki/OmniScriptum)
+
+# External Links
+
+- [Franz-Günter Winkler - homepage](http://members.aon.at/fgwinkler/)
+
+# References
+
+1. [↑](#cite_ref-1) [Franz-Günter Winkler - homepage](http://members.aon.at/fgwinkler/)
+2. [↑](#cite_ref-2) [Cognitive Science and Artificial Intelligence](http://members.aon.at/fgwinkler/cognition.html)
+3. [↑](#cite_ref-3) [The Euclidean Interpretation of Relativity Theory](http://members.aon.at/fgwinkler/relativity.html)
+4. [↑](#cite_ref-4) [Spacetime Holism](http://members.aon.at/fgwinkler/holism.html)
+5. [↑](#cite_ref-5) [Philosophy of Time](http://members.aon.at/fgwinkler/time.html)
+6. [↑](#cite_ref-6) [Philosophy of Mind](http://members.aon.at/fgwinkler/consciousness.html)
+7. [↑](#cite_ref-7) Franz-Günter Winkler (**2004**). *[Spacetime Holism - A Fundamental Approach to the Representation Problem in Cognitive Science](http://repositum.tuwien.ac.at/obvutwhs/content/titleinfo/1562461?lang=en)*. Ph.D. thesis, [Vienna University of Technology](/Vienna_University_of_Technology "Vienna University of Technology"), [pdf](http://www.ub.tuwien.ac.at/diss/AC04222135.pdf)
+8. [↑](#cite_ref-8) [Franz-Günter Winkler - Publications](http://members.aon.at/fgwinkler/publications.html)
+9. [↑](#cite_ref-9) [dblp: Franz-Günter Winkler](https://dblp.uni-trier.de/pers/hd/w/Winkler:Franz=G=uuml=nter)
+
+**[Up one level](/People "People")**

@@ -1,0 +1,39 @@
+# Marek Strejczek
+
+Source: https://www.chessprogramming.org/Marek_Strejczek
+
+**[Home](/Main_Page "Main Page") \* [People](/People "People") \* Marek Strejczek**
+
+[![](/images/b/bc/MarekStrejczek.jpg)](https://www.goldenline.pl/marek-strejczek/)
+
+Marek Strejczek [[1]](#cite_note-1)
+
+**Marek Strejczek**,  
+a Polish computer scientist and IT specialist experienced with development and deployment of complex IT systems.
+He defended his masters degree in computer science at the [Technical University of Łódź](/Technical_University_of_%C5%81%C3%B3d%C5%BA "Technical University of Łódź") under supervision of [Maciej Szmit](/Maciej_Szmit "Maciej Szmit"). His thesis entitled *Some aspects of chess programming* contains an overview of major chess programming techniques, descibes the implementation of his own chess program [Nesik](/Nesik "Nesik") [[2]](#cite_note-2),
+and further elaborates on [book learning](/Book_Learning "Book Learning") [[3]](#cite_note-3).
+
+# Publications
+
+- Marek Strejczek (**2004**). *Some aspects of chess programming*. M.Sc. thesis, [Technical University of Łódź](/Technical_University_of_%C5%81%C3%B3d%C5%BA "Technical University of Łódź"), Supervisor [Maciej Szmit](/Maciej_Szmit "Maciej Szmit"), [pdf](http://read.pudn.com/downloads91/ebook/350723/Some%20Aspects%20of%20Chess%20Programming.PDF) [[4]](#cite_note-4)
+
+# Forum Posts
+
+- [Nesik - new version](http://www.open-aurec.com/wbforum/viewtopic.php?f=18&t=47527&p=179724) by Marek Strejczek, [Winboard Forum](/Computer_Chess_Forums "Computer Chess Forums"), May 08, 2004
+- [Nesik 0.7.0](http://www.open-aurec.com/wbforum/viewtopic.php?f=18&t=49126) by Marek Strejczek, [Winboard Forum](/Computer_Chess_Forums "Computer Chess Forums"), September 30, 2004
+- [Re: Move Generation Speed](http://www.open-aurec.com/wbforum/viewtopic.php?f=4&t=331&p=1399#p1399) by Marek Strejczek, [Winboard Forum](/Computer_Chess_Forums "Computer Chess Forums"), October 25, 2004 » [Move Generation](/Move_Generation "Move Generation")
+
+# External Links
+
+- [Marek Strejczek - personal information](https://www.goldenline.pl/marek-strejczek/)
+- [In the world of IT](http://mstrejczek.blogspot.com/) by Marek Strejczek]
+- [Marek Strejczek - Scrum Alliance](https://www.scrumalliance.org/community/profile/mstrejczek)
+
+# References
+
+1. [↑](#cite_ref-1) [Marek Strejczek - personal information](https://www.goldenline.pl/marek-strejczek/)
+2. [↑](#cite_ref-2) [Nesik - new version](http://www.open-aurec.com/wbforum/viewtopic.php?f=18&t=47527&p=179724) by Marek Strejczek, [Winboard Forum](/Computer_Chess_Forums "Computer Chess Forums"), May 08, 2004
+3. [↑](#cite_ref-3) Marek Strejczek (**2004**). *Some aspects of chess programming*. M.Sc. thesis, [Technical University of Łódź](/Technical_University_of_%C5%81%C3%B3d%C5%BA "Technical University of Łódź"), Supervisor [Maciej Szmit](/Maciej_Szmit "Maciej Szmit"), [pdf](http://read.pudn.com/downloads91/ebook/350723/Some%20Aspects%20of%20Chess%20Programming.PDF)
+4. [↑](#cite_ref-4) ["Some aspects of chess programming"](http://www.open-aurec.com/wbforum/viewtopic.php?f=4&t=121) by [Grzegorz Sidorowicz](/Grzegorz_Sidorowicz "Grzegorz Sidorowicz"), [Winboard Forum](/Computer_Chess_Forums "Computer Chess Forums"), October 02, 2004
+
+**[Up one Level](/People "People")**

@@ -1,0 +1,46 @@
+# Peter Kouwenhoven
+
+Source: https://www.chessprogramming.org/Peter_Kouwenhoven
+
+**[Home](/Main_Page "Main Page") \* [People](/People "People") \* Peter Kouwenhoven**
+
+[![](/images/8/8d/PeterKouwenhoven99.JPG)](http://old.csvn.nl/pics/orgvry.jpg)
+
+Peter Kouwenhoven [[1]](#cite_note-1)
+
+**Josephus Petrus Maria (Peter) Kouwenhoven**, (July 10, 1959 - July 24, 2015 [[2]](#cite_note-2))  
+was a Dutch computer scientist and environmental researcher, as senior researcher and post-graduate coordinator affiliated with the International Global Change Institute [[3]](#cite_note-3) within the [University of Waikato](https://en.wikipedia.org/wiki/University_of_Waikato), [Hamilton](https://en.wikipedia.org/wiki/Hamilton,_New_Zealand), [New Zealand](https://en.wikipedia.org/wiki/New_Zealand).
+Peter Kouwenhoven received his B.Sc. in biology with majors in mathematics (1980), and a M.Sc. in biology (1984) from [Leiden University](/Leiden_University "Leiden University"), a higher degree in computer science from Technical College, [The Hague](https://en.wikipedia.org/wiki/The_Hague) (1985), and a Ph.D. in [environmental management](https://en.wikipedia.org/wiki/Environmental_resource_management), faculty of [chemical engineering](https://en.wikipedia.org/wiki/Chemical_engineering), [University of Twente](https://en.wikipedia.org/wiki/University_of_Twente) in 1994 .
+He was early involved in computer chess. In 1978 his program [Alder](/Alder "Alder") ran on a [PDP-11/45](/PDP-11 "PDP-11") of the Leiden University in a small match versus [IGM](/IGM "IGM") and [Schak123](/Schak-H "Schak-H") [[4]](#cite_note-4). He then joined forces with [Dap Hartmann](/Dap_Hartmann "Dap Hartmann") on the chess program [Dappet](/Dappet "Dappet"). Peter Kouwenhoven was board member of the [CSVN](/CSVN "CSVN") in the 90s [[5]](#cite_note-5).
+
+# Selected Publications
+
+[[6]](#cite_note-6) [[7]](#cite_note-7)
+
+## 1987 ...
+
+- Peter Kouwenhoven (**1987**). *Advances in Computer Chess, The 5th Triennial Conference*. [ICCA Journal, Vol. 10, No. 2](/ICGA_Journal#10_2 "ICGA Journal") (report) » [Advances in Computer Chess 5](/Advances_in_Computer_Chess_5 "Advances in Computer Chess 5")
+- Peter Kouwenhoven (**1987**). *The 7th Dutch National Computer-Chess Championship*. [ICCA Journal, Vol. 10, No. 4](/ICGA_Journal#10_4 "ICGA Journal") » [DOCCC 1987](/DOCCC_1987 "DOCCC 1987")
+- [Dap Hartmann](/Dap_Hartmann "Dap Hartmann"), Peter Kouwenhoven (**1989**). *The 9th Dutch Computer-Chess Championship*. [ICCA Journal, Vol. 12, No. 4](/ICGA_Journal#12_4 "ICGA Journal") » [DOCCC 1989](/DOCCC_1989 "DOCCC 1989")
+
+## 1990 ...
+
+- [Dap Hartmann](/Dap_Hartmann "Dap Hartmann"), Peter Kouwenhoven (**1991**). *Sundry Computer Chess Topics*. [Advances in Computer Chess 6](/Advances_in_Computer_Chess_6 "Advances in Computer Chess 6")
+- Peter Kouwenhoven (**1994**). *The 14th Dutch Computer-Chess Championship*. [ICCA Journal, Vol. 17, No. 4](/ICGA_Journal#17_4 "ICGA Journal") » [DOCCC 1994](/DOCCC_1994 "DOCCC 1994")
+- Peter Kouwenhoven (**1997**). *Diep, Deep Trouble*. [ICCA Journal, Vol. 20, No. 3](/ICGA_Journal#20_3 "ICGA Journal") » [Diep](/Diep "Diep")
+
+# External Links
+
+- [Peter Kouwenhoven's ICGA Tournaments](https://www.game-ai-forum.org/icga-tournaments/person.php?id=427)
+
+# References
+
+1. [↑](#cite_ref-1) from Photo Composition of [CSVN](/CSVN "CSVN") Board members and known visitors, [DOCCC 1999](/DOCCC_1999 "DOCCC 1999"), [Dutch Open Computer Chess Championship 1999](http://old.csvn.nl/docc99.html) old [CSVN](/CSVN "CSVN") site
+2. [↑](#cite_ref-2) [Peter Kouwenhoven overleden](http://www.csvn.nl/index.php/nieuws/18-vereniging/710-peter-kouwenhoven-overleden), [CSVN](/CSVN "CSVN") site
+3. [↑](#cite_ref-3) [About - IGCI](http://www.igci.org.nz/)
+4. [↑](#cite_ref-4) [Prehistorie van het Nederlandse Computerschaak](http://old.csvn.nl/pre_hist.html) (Dutch)
+5. [↑](#cite_ref-5) Photo Composition of [CSVN](/CSVN "CSVN") Board members and known visitors, [DOCCC 1999](/DOCCC_1999 "DOCCC 1999"), [Dutch Open Computer Chess Championship 1999](http://old.csvn.nl/docc99.html) old [CSVN](/CSVN "CSVN") site
+6. [↑](#cite_ref-6) [ICGA Reference Database](/ICGA_Journal#RefDB "ICGA Journal")
+7. [↑](#cite_ref-7) [dblp: Peter Kouwenhoven](https://dblp.uni-trier.de/pers/hd/k/Kouwenhoven:Peter)
+
+**[Up one level](/People "People")**

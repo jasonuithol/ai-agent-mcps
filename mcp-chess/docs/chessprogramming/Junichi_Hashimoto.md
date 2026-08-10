@@ -1,0 +1,46 @@
+# Junichi Hashimoto
+
+Source: https://www.chessprogramming.org/Junichi_Hashimoto
+
+**[Home](/Main_Page "Main Page") \* [People](/People "People") \* Junichi Hashimoto**
+
+[![](/images/5/5d/JunichiHashimoto.jpg)](https://www.linkedin.com/in/junichihashimoto)
+
+Junichi Hashimoto [[1]](#cite_note-1)
+
+**Junichi Hashimoto**,  
+a Japanese computer scientist at [KDDI](https://en.wikipedia.org/wiki/KDDI) [R&D](https://en.wikipedia.org/wiki/Research_and_development), Ph.D. in 2011 from [Japan Advanced Institute of Science and Technology (JAIST)](/JAIST "JAIST") [[2]](#cite_note-2) [[3]](#cite_note-3).
+He was member of [Hiroyuki Iida's](/Hiroyuki_Iida "Hiroyuki Iida") *games laboratory* [[4]](#cite_note-4), and is co-author of [Tacos](/index.php?title=Tacos&action=edit&redlink=1 "Tacos (page does not exist)"), the four times Gold medal winner at [Computer Olympiads](/Computer_Olympiad "Computer Olympiad") [[5]](#cite_note-5), the [Connect6](/Connect6 "Connect6") program [NOMI6](https://www.game-ai-forum.org/icga-tournaments/program.php?id=592), and the [Go](/Go "Go") playing program [Nomitan](https://www.game-ai-forum.org/icga-tournaments/program.php?id=625), an [UCT](/UCT "UCT") based original program using an evaluation function optimized to game records of professional players.
+
+# Selected Publications
+
+[[6]](#cite_note-6)
+
+## 2007 ...
+
+- Junichi Hashimoto, [Tsuyoshi Hashimoto](/Tsuyoshi_Hashimoto "Tsuyoshi Hashimoto"), [Hiroyuki Iida](/Hiroyuki_Iida "Hiroyuki Iida") (**2007**). *[Context Killer Heuristic and Its Application to Computer Shogi](https://www.researchgate.net/publication/258121764_Context_Killer_Heuristic_and_Its_Application_to_Computer_Shogi)*. [CGW 2007](/CGW_2007 "CGW 2007") » [Killer Heuristic](/Killer_Heuristic "Killer Heuristic")
+- Junichi Hashimoto (**2007**). *Tacos wins Shogi tournament*. [ICGA Journal, Vol. 30, No. 3](/ICGA_Journal#30_3 "ICGA Journal") » [12th Computer Olympiad](/12th_Computer_Olympiad#Shogi "12th Computer Olympiad")
+- [Toru Ueda](/index.php?title=Toru_Ueda&action=edit&redlink=1 "Toru Ueda (page does not exist)"), [Tsuyoshi Hashimoto](/Tsuyoshi_Hashimoto "Tsuyoshi Hashimoto"), Junichi Hashimoto, [Hiroyuki Iida](/Hiroyuki_Iida "Hiroyuki Iida") (**2008**). *[Weak Proof-Number Search](https://link.springer.com/chapter/10.1007/978-3-540-87608-3_15)*. [CG 2008](/CG_2008 "CG 2008")
+- Junichi Hashimoto (**2009**). *Tacos wins Shogi tournament*. [ICGA Journal, Vol. 32, No. 2](/ICGA_Journal#32_2 "ICGA Journal") » [14th Computer Olympiad](/14th_Computer_Olympiad#Shogi "14th Computer Olympiad")
+
+## 2010 ...
+
+- [Takayuki Yajima](/index.php?title=Takayuki_Yajima&action=edit&redlink=1 "Takayuki Yajima (page does not exist)"), [Tsuyoshi Hashimoto](/Tsuyoshi_Hashimoto "Tsuyoshi Hashimoto"), [Toshiki Matsui](/index.php?title=Toshiki_Matsui&action=edit&redlink=1 "Toshiki Matsui (page does not exist)"), Junichi Hashimoto, [Kristian Spoerer](/index.php?title=Kristian_Spoerer&action=edit&redlink=1 "Kristian Spoerer (page does not exist)") (**2010**). *[Node-Expansion Operators for the UCT Algorithm](https://link.springer.com/chapter/10.1007%2F978-3-642-17928-0_11)*. [CG 2010](/CG_2010 "CG 2010")
+- Junichi Hashimoto (**2011**). *A Study on Game-Independent Heuristics in Game-Tree Search*. Ph.D. thesis, [JAIST](/JAIST "JAIST")
+- Junichi Hashimoto, [Akihiro Kishimoto](/Akihiro_Kishimoto "Akihiro Kishimoto"), [Kazuki Yoshizoe](/index.php?title=Kazuki_Yoshizoe&action=edit&redlink=1 "Kazuki Yoshizoe (page does not exist)"), [Kokolo Ikeda](/Kokolo_Ikeda "Kokolo Ikeda") (**2011**). *[Accelerated UCT and Its Application to Two-Player Games](https://link.springer.com/chapter/10.1007%2F978-3-642-31866-5_1)*. [Advances in Computer Games 13](/Advances_in_Computer_Games_13 "Advances in Computer Games 13")
+
+# External Links
+
+- [Junichi Hashimoto | LinkedIn](https://www.linkedin.com/in/junichihashimoto)
+- [Junichi Hashimoto's ICGA Tournaments](https://www.game-ai-forum.org/icga-tournaments/person.php?id=582)
+
+# References
+
+1. [↑](#cite_ref-1) [Junichi Hashimoto | LinkedIn](https://www.linkedin.com/in/junichihashimoto)
+2. [↑](#cite_ref-2) [Research Unit for Computers and Games - 2011 News](http://www.jaist.ac.jp/rccg/menu/new/2011news.htm#20110201)
+3. [↑](#cite_ref-3) Junichi Hashimoto (**2011**). *A Study on Game-Independent Heuristics in Game-Tree Search*. Ph.D. thesis, [JAIST](/JAIST "JAIST")
+4. [↑](#cite_ref-4) [Research Center for Computers and Games - Members](http://www.jaist.ac.jp/rccg/menu/member.htm)
+5. [↑](#cite_ref-5) [Shogi](https://www.game-ai-forum.org/icga-tournaments/game.php?id=17) at the [Computer Olympiad](/Computer_Olympiad "Computer Olympiad")
+6. [↑](#cite_ref-6) [dblp: Junichi Hashimoto](https://dblp.org/pers/hd/h/Hashimoto:Junichi)
+
+**[Up one level](/People "People")**

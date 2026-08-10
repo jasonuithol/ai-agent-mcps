@@ -1,0 +1,36 @@
+# Michigan State University
+
+Source: https://www.chessprogramming.org/Michigan_State_University
+
+**[Home](/Main_Page "Main Page") \* [Organizations](/Organizations "Organizations") \* Michigan State University**
+
+[![](https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/MSU_Computer_Center.jpg/330px-MSU_Computer_Center.jpg)](/File:MSU_Computer_Center.jpg)
+
+MSU Computer Center [[1]](#cite_note-1)
+
+**Michigan State University]** (MSU), [East Lansing](https://en.wikipedia.org/wiki/East_Lansing,_Michigan), [Michigan](https://en.wikipedia.org/wiki/Michigan), the [United States](https://en.wikipedia.org/wiki/United_States)
+
+# People
+
+- [Miguel A. Ballicora](/Miguel_A._Ballicora "Miguel A. Ballicora")
+- [Garth Courtois Jr.](/Garth_Courtois_Jr. "Garth Courtois Jr.")
+- [Ed Northam](/Ed_Northam "Ed Northam")
+- [George Stockman](/George_Stockman "George Stockman")
+- [Wojciech Wieczorek](/index.php?title=Wojciech_Wieczorek&action=edit&redlink=1 "Wojciech Wieczorek (page does not exist)")
+
+# Chess Programs
+
+- [Gaviota](/Gaviota "Gaviota") by [Miguel A. Ballicora](/Miguel_A._Ballicora "Miguel A. Ballicora")
+- [ETAOIN SHRDLU](/ETAOIN_SHRDLU "ETAOIN SHRDLU") by [Garth Courtois Jr.](/Garth_Courtois_Jr. "Garth Courtois Jr.")
+
+# External Links
+
+- [Michigan State University](http://www.msu.edu/)
+- [Michigan State University from Wikipedia](https://en.wikipedia.org/wiki/Michigan_State_University)
+- [History of Michigan State University from Wikipedia](https://en.wikipedia.org/wiki/History_of_Michigan_State_University)
+
+# References
+
+1. [↑](#cite_ref-1) [MSU Computer Center](https://commons.wikimedia.org/wiki/File:MSU_Computer_Center.jpg), [Michigan State University - Wikimedia Commons](https://commons.wikimedia.org/wiki/Michigan_State_University)
+
+**[Up one Level](/Organizations "Organizations")**
